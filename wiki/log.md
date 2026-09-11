@@ -112,3 +112,78 @@ Highest-value gap by inbound links: **[[solution-concepts]]** (6 inbound) ->
 
 **Next:** `/marl-ingest 2` (65 equations - check each against the PDF), or jump
 to [[ch03-games]] (8 equations) for the game models that ch. 1 keeps deferring to.
+
+## [2026-09-11] ingest | Chapters 2-5 (all of Part I)
+
+Read in full and ingested. 29 new pages, 4 rewritten. Wiki now 53 pages.
+
+**Ch. 2** (65 eqs) → [[markov-decision-process]], [[returns-and-discounting]],
+[[value-functions-and-bellman]], [[dynamic-programming]],
+[[temporal-difference-learning]], [[learning-curves]].
+Eq. 2.54 verified as errata-corrected (`k=1`).
+
+**Ch. 3** (8 eqs) → [[normal-form-games]], [[repeated-normal-form-games]],
+[[stochastic-games]], [[partial-observability]], [[knowledge-assumptions]],
+[[communication-in-games]], [[rl-game-theory-dictionary]].
+
+**Ch. 4** (30 eqs) → [[solution-concepts]], [[best-response]], [[minimax]],
+[[nash-equilibrium]], [[correlated-equilibrium]], [[pareto-optimality]],
+[[social-welfare-and-fairness]], [[no-regret]], [[complexity-of-equilibria]].
+
+**Ch. 5** (11 eqs) → [[general-learning-process]], [[convergence-types]],
+[[central-learning]], [[independent-learning]], [[equilibrium-selection]],
+[[agent-modelling]]; rewrote [[non-stationarity]], [[credit-assignment]],
+[[scaling-in-number-of-agents]], [[self-play]].
+
+### Open questions resolved
+
+- ✅ **[[scaling-in-number-of-agents]]** — §5.4.4 supplies ch. 1.4's promised
+  counter-example. A power plant with 1,000 control variables has $k^{1000}$
+  actions whether controlled by 1 agent or $n$: factoring a **fixed** action
+  vector among agents leaves $|A|$ **independent of $n$**. Exponential growth
+  only occurs when each added agent brings **new** action variables. So the
+  scaling argument for decentralisation is narrower than ch. 1 implies.
+- ✅ **[[level-based-foraging]]** — the ch. 1 "conflict" was not one. §3.3 states
+  both a common-reward variant (+1 to all) and a general-sum variant (+1 only to
+  agents involved) as intended options. Which is in play must be stated when
+  comparing results. Still open: which §11.3.1 makes the default.
+- ✅ **[[reward-structures]]** — §3.1 gives the formal definitions. Common-reward
+  is $R_i = R_j$; zero-sum is $\sum_i R_i(a) = 0$ (a special case of
+  constant-sum). "Fully cooperative" is ch. 1's informal phrasing with no
+  separate formal definition.
+- ✅ **[[credit-assignment]]** — §5.4.3 lists the counterfactual methods ch. 1.4
+  gestured at: difference rewards (Wolpert & Tumer 2002) and learned value
+  decomposition (Rashid, Sunehag, Son et al.), i.e. §9.4.4 and §9.5.
+
+### Corrections to earlier pages
+
+- **Credit assignment is not a common-reward problem.** Ch. 1 introduces it via a
+  common-reward example; §5.4.3 states explicitly it "exists more generally and
+  does not depend on common rewards." Page rewritten.
+- **Non-stationarity already exists in single-agent RL** (the moving target in
+  TD bootstrapping). What MARL adds is that the *environment* becomes
+  non-stationary and, critically, **non-Markovian** from each agent's view
+  (Laurent et al. 2011). Ch. 1's framing was incomplete.
+
+### Worth flagging
+
+- §4.11: **computing Nash equilibria is PPAD-complete**, and because the result
+  covers ε-Nash it covers MARL algorithms too. "MARL is unlikely to be a magic
+  bullet." Reframes ch. 6/9 as *structure exploitation* → [[complexity-of-equilibria]]
+- §5.2: **a converged learning curve does not imply convergence to a solution**
+  — expected returns can converge while $\pi^z$ satisfies none of Eqs. 5.3–5.8.
+  Carried into [[convergence-types]] and relevant to `workflows/experiment.md`.
+- §5.3.3: in the book's own LBF experiment **IQL beats CQL**, and §5.3.2 notes IL
+  is often competitive with state-of-the-art (Papoudakis et al. 2021). Baseline
+  discipline for `experiments/`.
+- §5.3.2: idealised IQL in Prisoner's Dilemma can be **chaotically
+  non-convergent while averaging above the Nash equilibrium reward** — failing
+  to converge outperforms converging.
+
+Lint: 53 pages, no orphans. 13 unwritten link targets, **all belonging to
+ch. 6, 9 or 11** — the un-ingested chapters. Highest demand:
+[[value-decomposition]] (7 inbound, → §9.5), [[iql-tabular]] (6, → the tabular
+exercise), [[vdn]]/[[qmix]] (4 each, → §9.5.2–9.5.3).
+
+**Next:** ch. 6 (64 eqs — the user is starting it). Then ch. 9 (98 eqs), worth
+splitting across sessions.

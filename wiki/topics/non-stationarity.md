@@ -1,32 +1,76 @@
 ---
 title: Non-Stationarity
 type: topic
-status: stub
-sources: ["[[ch01-introduction]]"]
+status: solid
+sources: ["[[ch01-introduction]]", "[[ch05-marl-in-games]]"]
 updated: 2026-09-11
 ---
 
 # Non-Stationarity
 
-Caused by the continually changing policies of agents *while they are learning*
-[Ch. 1.4]. The first of the four challenges, and the one that most directly
-breaks single-agent RL guarantees.
+"The non-stationarity resulting from the continual co-adaptation of multiple
+agents as they learn from interactions with one another" [Ch. 5.4.1]. The
+defining challenge of MARL.
 
-**The moving target problem.** Each agent adapts to the other agents' policies,
-which are themselves adapting to it — "thereby potentially causing cyclic and
-unstable learning dynamics" [Ch. 1.4].
+## The definition, precisely
 
-**Made worse by heterogeneity of rates.** Agents "may learn different behaviors
-at different rates as a result of their different rewards and local
-observations" [Ch. 1.4] — so it isn't only that the target moves, but that it
-moves at a rate you don't control or observe.
+A stochastic process $\{X^t\}$ is **stationary** if the distribution of
+$X^{t+\tau}$ does not depend on $\tau$ — the dynamics don't change over time.
 
-Centralisation can alleviate it [Ch. 1.2] → [[training-execution-modes]].
+**In an MDP with a fixed policy, the process is stationary:** $s^t$ depends only
+on $s^{t-1}, a^{t-1}$ (Markov property), and $a^{t-1}$ only on $s^{t-1}$ via
+$\pi$. No dependence on $t$.
 
-> This page records only what ch. 1 asserts. The substantive treatment is §5.4
-> ([[ch05-marl-in-games]]); deep-MARL mitigations are in [[ch09-deep-marl]].
-> Ch. 1 gives no formal definition and no equation.
+## Non-stationarity already exists in single-agent RL
+
+Once learning starts, $\pi^{z+1} = L(D^z,\pi^z)$ makes the policy depend on $t$,
+so the process is non-stationary. This breaks **value learning**: the TD target
+$r^t + \gamma Q(s^{t+1},a^{t+1})$ ([[temporal-difference-learning]]) uses value
+estimates that are themselves changing — the **moving target problem**.
+
+## What MARL adds
+
+Not just the value estimates but **the environment itself** appears
+non-stationary from each agent's view. In [[independent-learning]], the other
+agents' policies enter agent $i$'s transition function [Eq. 5.10]:
+$$T_i(s^{t+1}\mid s^t,a_i^t) \propto \sum_{a_{-i}} T(s^{t+1}\mid s^t,\langle a_i^t,a_{-i}\rangle)\prod_{j\ne i}\pi_j(a_j\mid s^t)$$
+
+As each $\pi_j$ is updated, $T_i$ changes.
+
+> **The consequence that matters most:** the dynamics become **non-Markovian**,
+> "since they now also depend on the history of the interaction" (Laurent,
+> Matignon & Le Fort-Piat 2011). The Markov property that licensed per-state
+> value functions ([[value-functions-and-bellman]]) no longer holds from a
+> single agent's perspective.
+
+**Cyclic dynamics** follow: each agent adapts to the others, who adapt back.
+Fig. 5.5 visualises two WoLF-PHC agents in Rock-Paper-Scissors spiralling
+through policy space before settling on the uniform Nash equilibrium.
+
+## Why the single-agent guarantees don't carry over
+
+> "Because of these non-stationarity issues, the usual stochastic approximation
+> conditions required for temporal-difference learning in single-agent RL
+> (Equation 2.54) are usually **not sufficient** in MARL to ensure convergence"
+> [Ch. 5.4.1].
+
+And what exists instead is narrow: "all known theoretical results in MARL for
+convergent learning are limited to restricted game settings and mostly only work
+for specific algorithms." IGA converges to the average reward of a Nash
+equilibrium; WoLF-IGA to a Nash equilibrium — **both only for two-agent,
+two-action normal-form games** → [[convergence-types]],
+[[ch06-foundational-algorithms]].
+
+Ongoing: Zhang, Yang & Basar 2019; Daskalakis, Foster & Golowich 2020; Wei et
+al. 2021; Ding et al. 2022; Leonardos et al. 2022.
+
+## Mitigations
+
+- **Centralisation** — [[central-learning]] "circumvents" it by having one
+  learner; CTDE alleviates it during training
+  → [[centralised-training-decentralised-execution]].
+- **More agents makes it worse** → [[scaling-in-number-of-agents]].
 
 ## Related
-[[credit-assignment]] · [[scaling-in-number-of-agents]] · [[solution-concepts]] ·
-[[centralised-training-decentralised-execution]]
+[[independent-learning]] · [[convergence-types]] · [[equilibrium-selection]] ·
+[[credit-assignment]] · [[markov-decision-process]]

@@ -1,45 +1,106 @@
 ---
 title: "Ch. 3 — Games: Models of Multi-Agent Interaction"
 type: source
-status: stub
+status: solid
 sources: ["MARL book, Ch. 3, pp. 43–60 (2nd printing)"]
 updated: 2026-09-11
 ---
 
 # Chapter 3 — Games: Models of Multi-Agent Interaction
 
-> **Skeleton only — this chapter has not been ingested.** Structure below is
-> verified from the book's table of contents; the description is quoted from
-> chapter 1's own overview. **Nothing here is a summary of the chapter's
-> content**, because the chapter has not been read. Run `/marl-ingest 3` to fill it in.
+Formalises what [[ch01-introduction]] described informally. Defines a
+**hierarchy of game models** [Fig. 3.1] and the reward-structure taxonomy — but
+deliberately **does not** define what it means to *solve* one. That's
+[[ch04-solution-concepts]].
 
-Introduces "the basic game models to define concepts such as states, actions, observations, and rewards in a multi-agent environment" [Ch. 1.6] — "basic normal-form games, stochastic games, and partially observable stochastic games" [Part I divider].
+Only 8 numbered equations; this is a definitional chapter.
 
-**pp. 43–60** · **8 numbered equations** · extracted text: `book/text/ch03.md` · slides: `upstream/slides/`
+> 📕 errata: p48 — footnote 6 removed. Our copy shows footnote 5 at that point,
+> consistent with the 2nd printing. See [[errata]].
 
-> 📕 errata — entries falling in this chapter (already applied in our 2nd
-> printing, see [[errata]]; verify before transcribing):
->
-> - p48: removed footnote 6
+## The hierarchy
 
-## Structure
+```
+        POSG  (n agents, m states, partially observed)
+          │
+    Stochastic Game  (n agents, m states, fully observed)
+          │
+    ┌─────┴─────┐
+Repeated NFG    MDP
+(n agents,     (1 agent,
+ 1 state)       m states)
+```
+[Fig. 3.1]
 
-- **3.1** Normal-Form Games — p44
-- **3.2** Repeated Normal-Form Games — p46
-- **3.3** Stochastic Games — p47
-- **3.4** Partially Observable Stochastic Games — p49
-  - **3.4.1** Belief States and Filtering — p53
-- **3.5** Modeling Communication — p55
-- **3.6** Knowledge Assumptions in Games — p56
-- **3.7** Dictionary: Reinforcement Learning ↔ Game Theory — p58
-- **3.8** Summary — p58
+Each is a special case of the one above:
+- **MDP** = stochastic game with one agent → [[markov-decision-process]]
+- **Repeated normal-form game** = stochastic game with $|S| = 1$, $\bar{S} = \emptyset$
+- **Stochastic game** = POSG where $o_i^t = (s^t, a^{t-1})$
+- **POMDP** = POSG with one agent
+- **Dec-POMDP** = POSG with common rewards
 
-## Notes for ingest
+Pages: [[normal-form-games]] · [[repeated-normal-form-games]] ·
+[[stochastic-games]] · [[partial-observability]]
 
-- Formalises what [[multi-agent-system]] describes informally.
-- Should settle the open question on [[reward-structures]]: whether common reward and fully cooperative are strictly synonymous.
-- §3.6 covers the Knowledge dimension of Fig. 1.4; §3.7 is an RL↔game-theory dictionary.
+**Normal-form games are the basic building block.** With rewards written
+$R_i(s,a)$, every state of a stochastic game *is* a non-repeated normal-form
+game with rewards $R_i(s,\cdot)$ [Fig. 3.3, §3.3]. The analogy the book draws:
+normal-form game is to stochastic game as multi-armed bandit is to MDP.
+
+> Out of scope: **extensive-form games**, where agents act in turns rather than
+> simultaneously [footnote 1]. The book uses simultaneous-move games because
+> most MARL research does and because they extend MDPs more naturally;
+> transformations between the two exist (Shoham & Leyton-Brown 2008).
+
+## Reward classification — the formal definitions
+
+Carries over unchanged from normal-form games to stochastic games and POSGs
+[§3.1, §3.3, §3.4]:
+
+| | Condition |
+|---|---|
+| **Zero-sum** | $\sum_{i \in I} R_i(a) = 0$ for all $a \in A$ |
+| **Common-reward** | $R_i = R_j$ for all $i, j \in I$ |
+| **General-sum** | no restriction |
+
+Two agents and zero-sum ⇒ $R_i = -R_j$. Zero-sum is a special case of
+**constant-sum** (rewards sum to a constant) [footnote 2].
+→ [[reward-structures]]
+
+## §3.6 — What agents know
+
+The chapter's most consequential section for MARL practice, and the multi-agent
+counterpart to the MDP knowledge assumption in [[ch02-reinforcement-learning]].
+
+Game theory's default is a **complete knowledge game**: everyone knows every
+action space, reward function, $S$, $T$, and all observation functions.
+**MARL sits at the opposite end** — agents typically know neither others' reward
+functions *nor their own*, and nothing of $T$ or $O_i$ ("incomplete information
+game", Harsanyi 1967). → [[knowledge-assumptions]]
+
+## §3.7 — RL ↔ game theory dictionary
+
+Fig. 3.5 maps the vocabularies, since the book uses RL terms throughout:
+environment/game, agent/player, reward/payoff-utility, policy/strategy,
+deterministic/pure, probabilistic/mixed, joint X / X profile.
+→ [[rl-game-theory-dictionary]]
+
+## Other contents
+
+- **§3.2** repeated games — policies condition on joint-action history;
+  finite ≠ infinite repetition (end-game effects) → [[repeated-normal-form-games]]
+- **§3.4.1** belief states and filtering [Eq. 3.5] → [[partial-observability]]
+- **§3.5** modelling communication [Eqs. 3.6–3.7] → [[communication-in-games]]
+
+## Closing frame
+
+> "Similarly to single-agent RL, a learning problem in MARL is given by the
+> combination of a game model and a learning objective for the agents" [§3.8].
+
+Exactly parallel to Fig. 2.1 in [[ch02-reinforcement-learning]]. This chapter
+supplies the model; [[ch04-solution-concepts]] supplies the objective. Many of
+the six dimensions of Fig. 1.4 are fixed by the game specification.
 
 ## Related
-
-[[ch01-introduction]] · [[errata]] · [[index|wiki index]]
+[[normal-form-games]] · [[stochastic-games]] · [[partial-observability]] ·
+[[reward-structures]] · [[knowledge-assumptions]] · [[ch04-solution-concepts]]

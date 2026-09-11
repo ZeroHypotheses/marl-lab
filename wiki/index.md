@@ -6,11 +6,12 @@ when answering a question, then drill into the pages it points at.
 Status legend: `stub` = placeholder · `drafted` = written, unverified ·
 `solid` = checked against a cited source.
 
-**Chapter 1 is ingested.** Chapters 2–11 have *skeleton* pages: verified section
-structure, page ranges, equation counts and errata pointers, but **no summary of
-their content** — they haven't been read. They exist so the wiki is navigable
-("where is IGM defined?" → §9.5.1) without anything being invented. Fill one in
-with [`/marl-ingest <n>`](../workflows/ingest.md).
+**Chapters 1–5 are ingested** (all of Part I plus the introduction). Chapters
+6–11 and Appendix A have *skeleton* pages: verified section structure, page
+ranges, equation counts and errata pointers, but **no summary of their content**
+— they haven't been read. They exist so the wiki is navigable ("where is IGM
+defined?" → §9.5.1) without anything being invented. Fill one in with
+[`/marl-ingest <n>`](../workflows/ingest.md).
 
 ---
 
@@ -31,10 +32,10 @@ equations must be checked against the PDF, since extraction is lossy.
 | Page | Ch. | Title | Pages | Status |
 |---|---|---|---|---|
 | `[[ch01-introduction]]` | 1 | Introduction | 1–18 | **ingested** |
-| `[[ch02-reinforcement-learning]]` | 2 | Reinforcement Learning | 19–42 | skeleton |
-| `[[ch03-games]]` | 3 | Games: Models of Multi-Agent Interaction | 43–60 | skeleton |
-| `[[ch04-solution-concepts]]` | 4 | Solution Concepts for Games | 61–88 | skeleton |
-| `[[ch05-marl-in-games]]` | 5 | MARL in Games: First Steps and Challenges | 89–114 | skeleton |
+| `[[ch02-reinforcement-learning]]` | 2 | Reinforcement Learning | 19–42 | **ingested** |
+| `[[ch03-games]]` | 3 | Games: Models of Multi-Agent Interaction | 43–60 | **ingested** |
+| `[[ch04-solution-concepts]]` | 4 | Solution Concepts for Games | 61–88 | **ingested** |
+| `[[ch05-marl-in-games]]` | 5 | MARL in Games: First Steps and Challenges | 89–114 | **ingested** |
 | `[[ch06-foundational-algorithms]]` | 6 | MARL: Foundational Algorithms | 115–160 | skeleton |
 | `[[ch07-deep-learning]]` | 7 | Deep Learning | 161–182 | skeleton |
 | `[[ch08-deep-rl]]` | 8 | Deep Reinforcement Learning | 183–218 | skeleton |
@@ -62,23 +63,61 @@ have no deck.
 
 ## Topics
 
+### Single-agent RL foundations — ch. 2
 | Page | What | Status |
 |---|---|---|
-| `[[multi-agent-system]]` | Environment + agents + goals; agent vs. object | stub ✓ ch1 |
-| `[[reward-structures]]` | Common / zero-sum / general-sum — the book's spine | stub ✓ ch1 |
-| `[[training-execution-modes]]` | Centralised, decentralised, CTDE | stub ✓ ch1 |
-| `[[marl-agendas]]` | Computational / prescriptive / descriptive | drafted ✓ ch1 |
-| `[[scaling-in-number-of-agents]]` | Exponential joint action spaces | stub ✓ ch1 |
-| `[[normal-form-games]]` | Stateless multi-agent interaction | stub |
-| `[[stochastic-games]]` | Games with state; the core MARL model | stub |
-| `[[partial-observability]]` | POSGs, Dec-POMDPs, what agents can't see | stub |
-| `[[solution-concepts]]` | Nash, correlated, Pareto, social welfare | stub |
-| `[[non-stationarity]]` | Why single-agent RL guarantees break | stub ✓ ch1 |
-| `[[centralised-training-decentralised-execution]]` | CTDE — the dominant deep-MARL paradigm | stub ✓ ch1 |
-| `[[credit-assignment]]` | Which agent caused the team reward? | stub ✓ ch1 |
+| `[[markov-decision-process]]` | The standard single-agent model; Markov property | solid |
+| `[[returns-and-discounting]]` | Discounted return; **γ is part of the problem, not a knob** | solid |
+| `[[value-functions-and-bellman]]` | $V^\pi$, $Q^\pi$, Bellman (optimality) equations | solid |
+| `[[dynamic-programming]]` | Policy/value iteration; contraction mappings | solid |
+| `[[temporal-difference-learning]]` | Sarsa, Q-learning, ε-greedy, convergence conditions | solid |
+| `[[learning-curves]]` | Evaluation protocol — cumulative steps, not episodes | solid |
+
+### Game models — ch. 3
+| Page | What | Status |
+|---|---|---|
+| `[[normal-form-games]]` | Single interaction; matrix games; the 78 distinct 2×2 games | solid |
+| `[[repeated-normal-form-games]]` | History-conditioned policies; finite ≠ infinite | solid |
+| `[[stochastic-games]]` | Games with state — the core MARL model | solid |
+| `[[partial-observability]]` | POSGs, Dec-POMDPs, belief states and why they're unusable | solid |
+| `[[knowledge-assumptions]]` | MARL assumes agents know almost nothing | solid |
+| `[[communication-in-games]]` | Messages as actions that don't move the state | solid |
+| `[[rl-game-theory-dictionary]]` | RL ↔ game theory vocabulary | solid |
+
+### Solution concepts — ch. 4
+| Page | What | Status |
+|---|---|---|
+| `[[solution-concepts]]` | **Hub** — what counts as solving a game | solid |
+| `[[best-response]]` | The primitive underlying every equilibrium | solid |
+| `[[minimax]]` | 2-agent zero-sum; polynomial via linear programming | solid |
+| `[[nash-equilibrium]]` | General-sum; and why ε-Nash is not an approximation | solid |
+| `[[correlated-equilibrium]]` | Dropping policy independence; Chicken beats Nash | solid |
+| `[[pareto-optimality]]` | Refinement — the Pareto frontier | solid |
+| `[[social-welfare-and-fairness]]` | Sum vs product of returns | solid |
+| `[[no-regret]]` | Judged across episodes, not on one policy | solid |
+| `[[complexity-of-equilibria]]` | **NASH is PPAD-complete** — MARL is no magic bullet | solid |
+
+### Learning in games — ch. 1 and 5
+| Page | What | Status |
+|---|---|---|
+| `[[multi-agent-system]]` | Environment + agents + goals; agent vs. object | solid |
+| `[[reward-structures]]` | Common / zero-sum / general-sum — the book's spine | solid |
+| `[[general-learning-process]]` | Data, algorithm, goal; what policies condition on | solid |
+| `[[convergence-types]]` | Five criteria — and why a flat learning curve proves nothing | solid |
+| `[[central-learning]]` | CQL: one policy over joint actions | solid |
+| `[[independent-learning]]` | IQL: ignore the others — and a strong baseline | solid |
+| `[[training-execution-modes]]` | Centralised, decentralised, CTDE | solid |
+| `[[centralised-training-decentralised-execution]]` | CTDE — the dominant deep-MARL paradigm | stub |
+| `[[non-stationarity]]` | The moving target; dynamics become non-Markovian | solid |
+| `[[equilibrium-selection]]` | Stag Hunt; why IQL drifts to the risk-dominant equilibrium | solid |
+| `[[credit-assignment]]` | Whose action? — **not** only a common-reward problem | solid |
+| `[[scaling-in-number-of-agents]]` | Exponential — **except when it isn't** (§5.4.4) | solid |
+| `[[self-play]]` | Algorithm vs policy self-play; mixed-play | solid |
+| `[[agent-modelling]]` | Modelling the others — filled by ch. 6 | stub |
+| `[[marl-agendas]]` | Computational / prescriptive / descriptive | drafted |
 | `[[value-decomposition]]` | Factorising joint value functions; IGM | stub |
 | `[[parameter-sharing]]` | One network, many agents | stub |
-| `[[self-play]]` | Training against copies of yourself | stub |
+| `[[level-based-foraging]]` | The book's running example | drafted |
 
 ---
 
