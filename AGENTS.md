@@ -5,6 +5,13 @@ Canonical instructions for **any** coding agent working in this repository
 `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` are symlinks to
 this file. Edit this file; never edit the symlinks.
 
+**This repo is harness-agnostic by construction.** Every instruction lives in
+plain markdown that any agent can read — this file and `workflows/`. Nothing
+here requires a particular tool, and no harness gets behaviour another cannot
+reproduce. Where a harness-specific file exists (`.claude/`, `CLAUDE.md`,
+`GEMINI.md`), it is a **symlink or a thin pointer**, never a second copy of the
+rules.
+
 ---
 
 ## 1. What this repo is
@@ -47,8 +54,9 @@ marl-lab/
 ├── experiments/           the human's own work — one directory per experiment
 │   └── _template/         copy this to start a new one
 ├── workflows/             harness-neutral playbooks (the real instructions)
-├── scripts/               small utilities (bootstrap, book text extraction)
-└── .claude/skills/        thin Claude Code wrappers around workflows/
+├── scripts/               small utilities (bootstrap, book text, invariant check)
+├── .agents/skills/        thin skill wrappers — canonical, cross-harness
+└── .claude/skills/        symlinks into .agents/skills/ (Claude Code discovery)
 ```
 
 ---
@@ -95,17 +103,39 @@ its hypothesis before it states its code.
 
 ## 4. Workflows
 
-Detailed playbooks live in `workflows/`. Read the relevant one before acting.
+**The playbooks in `workflows/` are the instructions.** They are plain markdown
+with no harness-specific syntax. Read the relevant one in full before acting —
+whatever agent you are.
 
-| Task | Playbook | Claude shortcut |
+| Task | Playbook | Ask for it by saying |
 |---|---|---|
-| File a chapter, paper, or talk into the wiki | [workflows/ingest.md](workflows/ingest.md) | `/marl-ingest` |
-| Answer a question against the wiki | [workflows/query.md](workflows/query.md) | `/marl-ask` |
-| Health-check the wiki (incl. errata drift) | [workflows/lint.md](workflows/lint.md) | `/marl-lint` |
-| Work through a book exercise | [workflows/exercise.md](workflows/exercise.md) | `/marl-exercise` |
-| Start a new experiment | [workflows/experiment.md](workflows/experiment.md) | `/marl-experiment` |
+| File a chapter, paper, or talk into the wiki | [workflows/ingest.md](workflows/ingest.md) | "ingest chapter 6", "file this paper" |
+| Answer a question against the wiki | [workflows/query.md](workflows/query.md) | "ask the wiki…", "what do we know about X" |
+| Health-check the wiki (incl. errata drift) | [workflows/lint.md](workflows/lint.md) | "lint the wiki", "check the wiki" |
+| Work through a book exercise | [workflows/exercise.md](workflows/exercise.md) | "help me with the IQL exercise" |
+| Start a new experiment | [workflows/experiment.md](workflows/experiment.md) | "start an experiment to test…" |
 
-Agents without a skill/command system: read the playbook file directly.
+### Skills
+
+`.agents/skills/<name>/SKILL.md` holds a thin wrapper per workflow, in the
+cross-harness skills layout. Each is ~19 lines and its whole body says "read
+`workflows/<x>.md`" — **the substance lives in one place only, so nothing can
+drift.**
+
+`.claude/skills/` contains symlinks into `.agents/skills/`, so Claude Code
+offers them as `/marl-ingest`, `/marl-ask`, `/marl-lint`, `/marl-exercise`,
+`/marl-experiment`. Other harnesses that read `.agents/skills/` pick them up
+directly.
+
+**If your harness has no skill mechanism at all, nothing is lost** — the table
+above is the routing, and the playbook files are the same ones the skills point
+to. A slash command is a shortcut, never a prerequisite.
+
+**Editing rule.** To change *behaviour*, edit `workflows/*.md`. To change when a
+skill triggers, edit `.agents/skills/*/SKILL.md` — the real files. Never replace
+a `.claude/skills/` symlink with a copy, and never paste a playbook's content
+into a skill; the moment the same instruction exists twice, the two harnesses
+stop agreeing.
 
 ---
 
@@ -133,6 +163,12 @@ printings (the errata itself says "p203 (previously p202)"). `[Ch. 9.3]` and
 
 **Wikilinks.** `[[page-name]]` by slug, matching the filename without `.md`.
 A link to a page that doesn't exist yet is fine — it marks a gap worth filling.
+
+**Harness-agnosticism is checked.** `./scripts/check-harness-agnostic.sh`
+verifies the invariants: contract files are symlinks not copies, skills are
+canonical in `.agents/skills/` with `.claude/skills/` symlinked to them, skills
+stay thin, every workflow is reachable from this file, and `workflows/` names no
+particular tool. Run it after touching any agent-facing file.
 
 **Commits.** Present tense, scoped by area: `wiki: add page on CTDE`,
 `exp/03: sweep QMIX mixing-network width`, `upstream: bump codebase to <sha>`.

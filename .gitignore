@@ -32,11 +32,6 @@ experiments/**/*.ckpt
 .trash/
 wiki/assets/
 
-# Harness-generated mirror of .claude/skills/ (identical content, regenerated
-# on demand). The skills' real instructions live in workflows/, which every
-# harness reaches via AGENTS.md -- so this mirror adds nothing but drift risk.
-.agents/
-
 # Understand-Anything generated artifacts
 .understand/
 understand-output/

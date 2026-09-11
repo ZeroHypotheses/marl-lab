@@ -94,14 +94,30 @@ Three operations drive it:
 
 ## Working with agents
 
-`AGENTS.md` is canonical; `CLAUDE.md`, `GEMINI.md`, and
-`.github/copilot-instructions.md` are symlinks to it. Codex, Cursor, OpenCode,
-and Gemini CLI read `AGENTS.md` directly. Any harness works — the actual
-instructions live in plain markdown under `workflows/`, and the
-Claude Code skills in `.claude/skills/` are thin wrappers around those same files.
+**Harness-agnostic by construction.** Every instruction lives in plain markdown
+that any agent can read; no harness gets behaviour another cannot reproduce.
 
-**Claude Code shortcuts:** `/marl-ingest` · `/marl-ask` · `/marl-lint` ·
-`/marl-exercise` · `/marl-experiment`
+| Layer | File | Portable? |
+|---|---|---|
+| The contract | [`AGENTS.md`](AGENTS.md) | ✅ canonical |
+| The playbooks | [`workflows/`](workflows/) | ✅ plain markdown, no harness syntax |
+| The skills | `.agents/skills/<name>/SKILL.md` | ✅ cross-harness layout |
+
+Everything harness-specific is a **symlink or a pointer, never a second copy**:
+`CLAUDE.md`, `GEMINI.md` and `.github/copilot-instructions.md` symlink to
+`AGENTS.md`; `.claude/skills/*` symlinks into `.agents/skills/`. So Codex,
+Cursor, Gemini CLI, Copilot and OpenCode/Pi follow byte-identical instructions.
+
+The skills are ~19-line wrappers whose entire body is "read `workflows/<x>.md`",
+so the substance exists in exactly one place and cannot drift.
+
+**Claude Code** surfaces them as slash commands: `/marl-ingest` · `/marl-ask` ·
+`/marl-lint` · `/marl-exercise` · `/marl-experiment`.
+**Everywhere else**, ask in words — "ingest chapter 6", "lint the wiki", "start
+an experiment to test…" — and `AGENTS.md`'s workflow table routes to the same
+playbook. A slash command is a shortcut, never a prerequisite.
+
+Run `./scripts/check-harness-agnostic.sh` to verify the invariants hold.
 
 **Optional — [Understand Anything](https://github.com/Egonex-AI/Understand-Anything):**
 builds interactive knowledge graphs over both the code and the wiki.
@@ -114,7 +130,7 @@ builds interactive knowledge graphs over both the code and the wiki.
 Then `/understand upstream/codebase` to map the reference implementations, or
 `/understand-knowledge wiki/` to get a force-directed graph over the wiki —
 it parses the Karpathy-pattern `index.md` this repo already uses.
-See `scripts/install-understand-anything.sh` for non-Claude harnesses.
+For other harnesses: `scripts/install-understand-anything.sh <platform>`.
 
 ## Principle
 
