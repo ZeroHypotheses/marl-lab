@@ -101,4 +101,5 @@ $\epsilon = 0.05$, in the sense of [[learning-curves]].
 
 ## Related
 [[independent-learning]] · [[temporal-difference-learning]] ·
-[[normal-form-games]] · [[nash-equilibrium]] · [[non-stationarity]]
+[[normal-form-games]] · [[nash-equilibrium]] · [[non-stationarity]] ·
+[hands-on study loop](../notes/hands-on-study-loop.md)

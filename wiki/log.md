@@ -222,3 +222,22 @@ Verified the exercise imports and the environment constructs under `.venv`;
 Connection worth pursuing: PD is **class 3b** in Fig. 5.2, where IQL's
 convergence is "Y/N", and Wunder, Littman & Babes (2010) report chaotic
 non-convergence averaging *above* the Nash reward. Good first experiment.
+
+## [2026-09-11] query | Most efficient hands-on path after the first chapters
+
+Answered from: [[ch02-reinforcement-learning]], [[ch05-marl-in-games]],
+[[iql-tabular]] · Filed as: [[hands-on-study-loop]] · Gaps found: none.
+
+Recommended the tabular IQL Prisoner's Dilemma exercise as the first bridge
+from Chapters 1–5 into implementation, followed by one-factor perturbations of
+the ε schedule, learning rate, and seed. The durable loop is: predict,
+implement the smallest mechanism, run the supplied baseline, explain the
+result, vary one cause, and record the conclusion.
+
+## [2026-09-11] lint | Make hands-on study links portable
+
+The body of [[hands-on-study-loop]] used Obsidian-style wikilinks, which its
+standard Markdown preview did not resolve. Converted its navigational links,
+its index entry, and the backlink from [[iql-tabular]] to relative Markdown
+links. Verified that every target exists and that the note body contains no
+remaining unsupported wikilinks.

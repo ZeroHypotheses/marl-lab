@@ -140,7 +140,9 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 
 ## Notes
 
-*(Synthesis, comparisons, answered questions. Empty — nothing synthesised yet.)*
+| Page | What | Status |
+|---|---|---|
+| [Hands-on study loop](notes/hands-on-study-loop.md) | Read → predict → implement → run → explain → record; starts with tabular IQL | solid |
 
 ---
 
