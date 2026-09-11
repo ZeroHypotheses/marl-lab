@@ -1,0 +1,61 @@
+[project]
+name = "marl-lab"
+version = "0.1.0"
+description = "Personal laboratory for multi-agent reinforcement learning, built on Albrecht, Christianos & Schafer (MIT Press, 2024)"
+requires-python = ">=3.10,<3.13"
+
+# Kept deliberately light so `uv sync` always succeeds. The heavier pieces
+# (the book codebase, the environments) are opt-in extras below.
+dependencies = [
+    "torch>=2.2",
+    "gymnasium<1.0.0",        # marlbase pins <1.0; match it to stay compatible
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "pandas>=2.2",
+    "seaborn>=0.13",
+    "hydra-core>=1.3",
+]
+
+[project.optional-dependencies]
+# The book's reference implementations, as an editable install from the
+# submodule. Opt-in because marlbase depends on `cpprb`, a C++ extension that
+# often fails to build on macOS ARM / newer Pythons.
+#   uv sync --extra book
+# If cpprb fails, you can still read and copy from upstream/codebase/ —
+# nothing else in this repo depends on it.
+book = ["marlbase"]
+
+# Environments used by the book exercises. Separate because they pull a lot
+# and occasionally conflict with each other.
+#   uv sync --extra envs
+envs = [
+    "lbforaging",             # Level-Based Foraging
+    "rware",                  # Robotic Warehouse
+    "smaclite",               # SMAClite - not on PyPI, pulled from git (see sources)
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.6",
+    "pytest>=8.0",
+    "ipykernel>=6.29",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+# NOTE: upstream/ is READ-ONLY (AGENTS.md P5). Import marlbase, never edit it.
+marlbase = { path = "upstream/codebase", editable = true }
+# SMAClite is not published to PyPI; the exercises install it from git.
+smaclite = { git = "https://github.com/uoe-agents/smaclite.git" }
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["upstream", "book"]   # never lint or format upstream code
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["experiments"]

@@ -1,0 +1,32 @@
+# The MARL textbook is free to download for personal use but is NOT
+# redistributable. This repo has a public remote — keep the PDF local.
+book/*
+!book/README.md
+!book/.gitkeep
+
+# Extracted book text (derivative of the copyrighted PDF)
+book/text/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Experiment outputs
+experiments/**/runs/
+experiments/**/outputs/
+experiments/**/wandb/
+experiments/**/*.pt
+experiments/**/*.ckpt
+
+# Understand-Anything generated artifacts
+.understand/
+understand-output/
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp

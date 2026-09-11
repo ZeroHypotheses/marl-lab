@@ -1,0 +1,141 @@
+# AGENTS.md — marl-lab
+
+Canonical instructions for **any** coding agent working in this repository
+(Claude Code, Codex, Cursor, Copilot, Gemini CLI, OpenCode/Pi, …).
+`CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` are symlinks to
+this file. Edit this file; never edit the symlinks.
+
+---
+
+## 1. What this repo is
+
+A personal **learning laboratory** for multi-agent reinforcement learning, built
+around the textbook:
+
+> Stefano V. Albrecht, Filippos Christianos, Lukas Schäfer.
+> *Multi-Agent Reinforcement Learning: Foundations and Modern Approaches.*
+> MIT Press, 2024. — <https://www.marl-book.com>
+
+The repo is not a software product. Its output is **understanding**, and the
+durable artifact of that understanding is `wiki/`. Code here exists to test
+ideas, not to ship.
+
+The human curates sources, directs the work, and asks the questions.
+The agent reads, explains, scaffolds, cross-references, and maintains the wiki.
+
+---
+
+## 2. Layout
+
+```
+marl-lab/
+├── AGENTS.md              ← you are here (canonical agent contract)
+├── book/                  the textbook PDF + extracted per-chapter text
+│                          (gitignored — see book/README.md)
+├── upstream/              read-only git submodules from the book authors
+│   ├── codebase/          marl-book/codebase — reference algorithm implementations
+│   ├── slides/            marl-book/slides — lecture slides per chapter
+│   └── exercises/         marl-book/marl-book-exercises — code exercises
+├── wiki/                  the LLM-maintained knowledge base (agent-owned)
+│   ├── index.md           catalog of every page — read this first
+│   ├── log.md             append-only chronological record
+│   ├── SCHEMA.md          how the wiki is structured and maintained
+│   ├── topics/            concepts: game models, solution concepts, …
+│   ├── algorithms/        one page per algorithm (IQL, MADDPG, QMIX, …)
+│   ├── sources/           one page per ingested source (chapter, paper, talk)
+│   └── notes/             synthesis: comparisons, open questions, answers worth keeping
+├── experiments/           the human's own work — one directory per experiment
+│   └── _template/         copy this to start a new one
+├── workflows/             harness-neutral playbooks (the real instructions)
+├── scripts/               small utilities (bootstrap, book text extraction)
+└── .claude/skills/        thin Claude Code wrappers around workflows/
+```
+
+---
+
+## 3. Operating principles
+
+These are the agentic-first principles this lab runs on. They override
+default agent habits.
+
+**P1 — The wiki is the memory.** Anything learned that will matter next week
+belongs in `wiki/`, not in chat scrollback. A good answer to a good question is
+a wiki page, not a message. If a session produced insight and touched no file
+in `wiki/`, the session leaked.
+
+**P2 — Write for the next agent.** Every page states its own context. Assume the
+reader has no conversation history and cannot ask a follow-up. Link related
+pages with `[[wikilinks]]` liberally.
+
+**P3 — Teach, don't solve.** For anything in `upstream/exercises/`, the default
+is hints, Socratic questions, and pointers to the relevant book section — not
+a finished answer. Give the full solution only when explicitly asked for it,
+and when you do, explain *why* it works. Learning is the product; working code
+is a side effect.
+
+**P4 — Ground every claim.** Cite the source: `[Ch. 9.3]`, `[MADDPG paper §4]`,
+`upstream/codebase/…:42`. A claim in the wiki with no citation is a bug. When
+the book and a paper disagree, record both and flag the contradiction — do not
+silently pick one.
+
+**P5 — Upstream is read-only.** Never modify, reformat, or commit inside
+`upstream/`. To adapt an algorithm, copy it into `experiments/` and note its
+provenance. Submodule pointers move only via an explicit update.
+
+**P6 — Say what you don't know.** MARL is full of results that hold only under
+stated assumptions. Mark uncertainty inline (`> ❓ unverified:`) rather than
+rounding it off into confidence. Never invent a citation, a theorem number, or
+an equation.
+
+**P7 — Prefer the smallest runnable thing.** An experiment that finishes in
+30 seconds and answers one question beats a framework. Every experiment states
+its hypothesis before it states its code.
+
+---
+
+## 4. Workflows
+
+Detailed playbooks live in `workflows/`. Read the relevant one before acting.
+
+| Task | Playbook | Claude shortcut |
+|---|---|---|
+| File a chapter, paper, or talk into the wiki | [workflows/ingest.md](workflows/ingest.md) | `/marl-ingest` |
+| Answer a question against the wiki | [workflows/query.md](workflows/query.md) | `/marl-ask` |
+| Health-check the wiki | [workflows/lint.md](workflows/lint.md) | `/marl-lint` |
+| Work through a book exercise | [workflows/exercise.md](workflows/exercise.md) | `/marl-exercise` |
+| Start a new experiment | [workflows/experiment.md](workflows/experiment.md) | `/marl-experiment` |
+
+Agents without a skill/command system: read the playbook file directly.
+
+---
+
+## 5. Conventions
+
+**Python.** `uv` manages the environment. `uv sync` to install, `uv run python …`
+to execute. Experiments live in `experiments/<nn>-<slug>/` and may import the
+book's reference code from `upstream/codebase/`.
+
+**Submodules.** After cloning: `git submodule update --init --recursive`
+(or `scripts/bootstrap.sh`). Update upstream deliberately:
+`git submodule update --remote upstream/codebase` — then commit the pointer
+change with a message saying what moved and why.
+
+**The book PDF is not committed.** It is free to download for personal use but
+is not redistributable, and this repo has a public remote. `book/` is
+gitignored apart from its README. See `book/README.md`.
+
+**Wikilinks.** `[[page-name]]` by slug, matching the filename without `.md`.
+A link to a page that doesn't exist yet is fine — it marks a gap worth filling.
+
+**Commits.** Present tense, scoped by area: `wiki: add page on CTDE`,
+`exp/03: sweep QMIX mixing-network width`, `upstream: bump codebase to <sha>`.
+
+---
+
+## 6. Hard rules
+
+- Never write to `upstream/`.
+- Never commit `book/*.pdf` or extracted book text.
+- Never fabricate a citation, equation, theorem number, or experimental result.
+- Never hand over an exercise solution unless explicitly asked (P3).
+- Never delete a wiki page without recording the removal in `wiki/log.md`.

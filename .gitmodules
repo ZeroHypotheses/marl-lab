@@ -1,0 +1,10 @@
+[submodule "upstream/codebase"]
+	path = upstream/codebase
+	url = https://github.com/marl-book/codebase.git
+	branch = master
+[submodule "upstream/slides"]
+	path = upstream/slides
+	url = https://github.com/marl-book/slides.git
+[submodule "upstream/exercises"]
+	path = upstream/exercises
+	url = https://github.com/marl-book/marl-book-exercises.git
