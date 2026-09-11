@@ -42,3 +42,30 @@ Corrected `index.md` against the book's own table of contents:
 No wiki content pages written yet — only the source map.
 
 **Next:** `/marl-ingest` chapter 1.
+
+## [2026-09-11] ingest | Errata integrated
+
+Added <https://www.marl-book.com/errata.txt> as a tracked source.
+
+**Our PDF is the second printing — all published corrections are already
+applied.** Verified against six sentinels (p12 "quarter", Eq 2.54 `k=1`, p84
+phrase absent, p198 equations present, "InitializeNode", "blue bars" absent),
+not assumed. Recorded in [[errata]].
+
+Ten line-item corrections plus one insertion; five touch the mathematics
+(Eq 2.54, p80 $U(\pi)$ index, Eqs 8.30-8.31, Eq 9.10, and the equations added
+after Eq 8.8). Those would have been real errors to propagate had we been on
+the first printing.
+
+Wired in so it can't be forgotten:
+- `scripts/fetch-errata.sh` re-fetches, detects the printing from sentinels,
+  and compares the upstream checksum against the `sha256` in [[errata]]
+- ingest step 2 now checks errata before any transcription, with a
+  `> 📕 errata:` marker convention
+- lint check 4 is errata drift — **a new erratum can invalidate a wiki page
+  that was correct when written, and nothing else would catch that**
+
+New convention (AGENTS.md): **cite by section or equation, not page.**
+Pagination shifts between printings — the errata says "p203 (previously p202)".
+
+Recorded errata sha256: d64ee2d8dbf8e819b60481f93acfed087978a63b457cad6e3c70750de8687be8

@@ -21,18 +21,26 @@ when something feels inconsistent.
 3. **Contradictions** — scan `⚠️ conflict:` markers. Have any been resolved by a
    later source? Resolve and cite, or escalate to the human.
 
-4. **Stale claims** — pages whose `sources:` have since been superseded.
+4. **Errata drift** — run `./scripts/fetch-errata.sh`. It warns if the upstream
+   errata has changed since the `sha256` recorded in
+   [`wiki/sources/errata.md`](../wiki/sources/errata.md). If it has: read the new
+   entries, check whether any touches a section cited in `wiki/`, fix those
+   pages, then update the record (text, `sha256`, `checked:`) and log it.
+   **A wiki page that was right when written can be made wrong by a new
+   erratum — this check is the only thing that catches it.**
 
-5. **Unverified claims** — `❓ unverified:` markers. Can any be settled from a
+5. **Stale claims** — pages whose `sources:` have since been superseded.
+
+6. **Unverified claims** — `❓ unverified:` markers. Can any be settled from a
    source now in `book/` or `upstream/`? Settle them.
 
-6. **Missing pages** — concepts referenced repeatedly across pages with no page
+7. **Missing pages** — concepts referenced repeatedly across pages with no page
    of their own. These are the highest-value pages to write next.
 
-7. **Index drift** — every file in `wiki/*/` appears in `index.md`, and every
+8. **Index drift** — every file in `wiki/*/` appears in `index.md`, and every
    `index.md` row points at a real file. `status` values still honest?
 
-8. **Citation coverage** — non-obvious claims carrying no citation. Flag them.
+9. **Citation coverage** — non-obvious claims carrying no citation. Flag them.
 
 ## Output
 

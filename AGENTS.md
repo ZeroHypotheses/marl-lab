@@ -101,7 +101,7 @@ Detailed playbooks live in `workflows/`. Read the relevant one before acting.
 |---|---|---|
 | File a chapter, paper, or talk into the wiki | [workflows/ingest.md](workflows/ingest.md) | `/marl-ingest` |
 | Answer a question against the wiki | [workflows/query.md](workflows/query.md) | `/marl-ask` |
-| Health-check the wiki | [workflows/lint.md](workflows/lint.md) | `/marl-lint` |
+| Health-check the wiki (incl. errata drift) | [workflows/lint.md](workflows/lint.md) | `/marl-lint` |
 | Work through a book exercise | [workflows/exercise.md](workflows/exercise.md) | `/marl-exercise` |
 | Start a new experiment | [workflows/experiment.md](workflows/experiment.md) | `/marl-experiment` |
 
@@ -124,6 +124,13 @@ change with a message saying what moved and why.
 is not redistributable, and this repo has a public remote. `book/` is
 gitignored apart from its README. See `book/README.md`.
 
+**Citations: section, not page.** The book's pagination shifts between
+printings (the errata itself says "p203 (previously p202)"). `[Ch. 9.3]` and
+`[Eq. 2.54]` are stable; `[p. 203]` is not. Where only a page will do, write
+`[p. 203, 2nd printing]`. Our PDF is the **second printing** — see
+[`wiki/sources/errata.md`](wiki/sources/errata.md), and re-check with
+`./scripts/fetch-errata.sh`.
+
 **Wikilinks.** `[[page-name]]` by slug, matching the filename without `.md`.
 A link to a page that doesn't exist yet is fine — it marks a gap worth filling.
 
@@ -137,5 +144,7 @@ A link to a page that doesn't exist yet is fine — it marks a gap worth filling
 - Never write to `upstream/`.
 - Never commit `book/*.pdf` or extracted book text.
 - Never fabricate a citation, equation, theorem number, or experimental result.
+- Never transcribe an equation from a page covered by the errata without
+  checking [`wiki/sources/errata.md`](wiki/sources/errata.md) first.
 - Never hand over an exercise solution unless explicitly asked (P3).
 - Never delete a wiki page without recording the removal in `wiki/log.md`.

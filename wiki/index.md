@@ -17,6 +17,10 @@ as sources are ingested via [`/marl-ingest`](../workflows/ingest.md).
 Albrecht, Christianos & Schäfer, *Multi-Agent Reinforcement Learning:
 Foundations and Modern Approaches* (MIT Press, 2024).
 
+Our copy is the **second printing**; all published errata are already applied
+— see [[errata]]. Cite by section or equation, not page (pagination shifts
+between printings).
+
 Chapter list verified against the PDF's own table of contents. Extracted text
 is in `book/text/ch<NN>.md` (gitignored) — ingest reads from there, but
 equations must be checked against the PDF, since extraction is lossy.
@@ -48,6 +52,7 @@ have no deck.
 ### Other sources
 | Page | What | Status |
 |---|---|---|
+| `[[errata]]` | **Author-published corrections** — our PDF is the 2nd printing; all applied | solid |
 | `[[bcn-summer-school]]` | Barcelona MARL Summer School 2024 lectures ([videos](https://iiia.csic.es/en-us/marl-course/)) | stub |
 
 ---
