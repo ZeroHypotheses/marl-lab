@@ -1,0 +1,16 @@
+{
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "showUnsupportedFiles": false,
+  "showFrontmatter": true,
+  "attachmentFolderPath": "wiki/assets",
+  "userIgnoreFilters": [
+    "upstream/",
+    "book/",
+    ".venv/",
+    ".ruff_cache/",
+    ".agents/",
+    "experiments/_template/"
+  ]
+}

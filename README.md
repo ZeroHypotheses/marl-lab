@@ -50,6 +50,31 @@ Point your agent at [`AGENTS.md`](AGENTS.md).
 `upstream/` are pinned git submodules and are **read-only**. Update them
 deliberately with `git submodule update --remote upstream/<name>`.
 
+## Reading the wiki in Obsidian
+
+The wiki is plain markdown with `[[wikilinks]]`, so Obsidian reads it directly —
+no conversion, no plugins.
+
+**Open this repository folder as a vault:** Obsidian → *Open folder as vault* →
+select `marl-lab/`. Do **not** point it at `wiki/` alone; a few pages link out to
+`workflows/`, and those links only resolve from the repo root.
+
+`.obsidian/app.json` is committed, so the vault already excludes `upstream/`,
+`book/` and the virtual env from search and the graph — `book/text/` in
+particular holds raw PDF extractions that would otherwise drown every search.
+Per-machine UI state is gitignored.
+
+What works out of the box:
+
+- **Graph view** — [`wiki/index.md`](wiki/index.md) and the source pages are the
+  hubs. Colour groups are preconfigured: sources, topics, notes, workflows.
+- **LaTeX** — pages use `$…$` and `$$…$$`, rendered natively.
+- **Frontmatter as properties** — filter by `status: stub | drafted | solid` and
+  `type: source | topic | algorithm | note` to see what still needs work.
+- **Unresolved links show as gaps** — a `[[page]]` with no file is a deliberate
+  marker of something worth writing, not an error. `/marl-lint` ranks them by
+  inbound links.
+
 ## The wiki
 
 Rather than re-deriving knowledge from the PDF on every question, the agent

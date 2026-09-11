@@ -22,6 +22,16 @@ experiments/**/wandb/
 experiments/**/*.pt
 experiments/**/*.ckpt
 
+# Obsidian: keep the shared vault config (folder exclusions, graph colours),
+# ignore per-machine UI state and caches.
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/
+.obsidian/themes/
+.trash/
+wiki/assets/
+
 # Harness-generated mirror of .claude/skills/ (identical content, regenerated
 # on demand). The skills' real instructions live in workflows/, which every
 # harness reaches via AGENTS.md -- so this mirror adds nothing but drift risk.
