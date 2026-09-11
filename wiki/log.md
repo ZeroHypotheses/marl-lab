@@ -69,3 +69,46 @@ New convention (AGENTS.md): **cite by section or equation, not page.**
 Pagination shifts between printings — the errata says "p203 (previously p202)".
 
 Recorded errata sha256: d64ee2d8dbf8e819b60481f93acfed087978a63b457cad6e3c70750de8687be8
+
+## [2026-09-11] ingest | Chapter 1, plus skeleton pass over chapters 2-11
+
+**Chapter 1 fully ingested** (pp. 1-18, read in full; zero numbered equations,
+which is why it was safe to do in one pass). 10 pages created:
+[[ch01-introduction]], [[multi-agent-system]], [[reward-structures]],
+[[training-execution-modes]], [[marl-agendas]], [[non-stationarity]],
+[[credit-assignment]], [[scaling-in-number-of-agents]],
+[[centralised-training-decentralised-execution]], [[level-based-foraging]].
+
+Topic pages kept deliberately thin and marked `stub`: ch. 1 *names* these
+concepts but chapters 3-6 define them. Writing them out now would mean drawing
+on unsourced knowledge (P4, P6). [[marl-agendas]] is the exception at `drafted`
+— ch. 1.5 is the book's main treatment of it.
+
+Two things worth flagging from ch. 1:
+- **Conflict recorded on [[level-based-foraging]]**: §1.1-1.2 present the running
+  example as fully cooperative (+1 to all), but §1.1 also says the
+  implementation actually used (§11.3.1) rewards only agents *involved* in a
+  collection — making it mixed-motive. Resolve at [[ch11-environments]].
+- **Open question on [[scaling-in-number-of-agents]]**: §1.4 hedges that
+  joint-action growth is not always exponential, pointing at §5.4.4. Resolve at
+  [[ch05-marl-in-games]].
+
+**Skeleton pass over chapters 2-11 + Appendix A.** Each gets a source page with
+verified section structure (from the TOC, including sub-sections), page range,
+numbered-equation count, and the errata entries falling in it — but **no summary
+of content, because they have not been read.** Each carries a banner saying so.
+This makes the wiki navigable ("where is IGM defined?" -> §9.5.1) without
+inventing anything.
+
+Deliberately *not* doing full ingests of all 11 chapters at once: the book has
+336 numbered equations (ch. 9 alone has 98) and the extracted text is lossy.
+Bulk transcription without checking each against the PDF is precisely the
+failure the errata work guards against. Chapter 1 was safe because it has none.
+
+Lint: 24 pages, no orphans. 19 unwritten link targets, all intentional gaps.
+Highest-value gap by inbound links: **[[solution-concepts]]** (6 inbound) ->
+[[ch04-solution-concepts]], followed by [[value-decomposition]] (5) ->
+[[ch09-deep-marl]] §9.5.
+
+**Next:** `/marl-ingest 2` (65 equations - check each against the PDF), or jump
+to [[ch03-games]] (8 equations) for the game models that ch. 1 keeps deferring to.

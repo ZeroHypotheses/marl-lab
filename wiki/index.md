@@ -6,8 +6,11 @@ when answering a question, then drill into the pages it points at.
 Status legend: `stub` = placeholder · `drafted` = written, unverified ·
 `solid` = checked against a cited source.
 
-Everything below is a `stub` — this wiki is new. Pages get created and promoted
-as sources are ingested via [`/marl-ingest`](../workflows/ingest.md).
+**Chapter 1 is ingested.** Chapters 2–11 have *skeleton* pages: verified section
+structure, page ranges, equation counts and errata pointers, but **no summary of
+their content** — they haven't been read. They exist so the wiki is navigable
+("where is IGM defined?" → §9.5.1) without anything being invented. Fill one in
+with [`/marl-ingest <n>`](../workflows/ingest.md).
 
 ---
 
@@ -27,18 +30,18 @@ equations must be checked against the PDF, since extraction is lossy.
 
 | Page | Ch. | Title | Pages | Status |
 |---|---|---|---|---|
-| `[[ch01-introduction]]` | 1 | Introduction | 1–18 | stub |
-| `[[ch02-reinforcement-learning]]` | 2 | Reinforcement Learning | 19–42 | stub |
-| `[[ch03-games]]` | 3 | Games: Models of Multi-Agent Interaction | 43–60 | stub |
-| `[[ch04-solution-concepts]]` | 4 | Solution Concepts for Games | 61–88 | stub |
-| `[[ch05-marl-in-games]]` | 5 | MARL in Games: First Steps and Challenges | 89–114 | stub |
-| `[[ch06-foundational-algorithms]]` | 6 | MARL: Foundational Algorithms | 115–160 | stub |
-| `[[ch07-deep-learning]]` | 7 | Deep Learning | 161–182 | stub |
-| `[[ch08-deep-rl]]` | 8 | Deep Reinforcement Learning | 183–218 | stub |
-| `[[ch09-deep-marl]]` | 9 | Multi-Agent Deep Reinforcement Learning | 219–304 | stub |
-| `[[ch10-marl-in-practice]]` | 10 | Multi-Agent Deep RL in Practice | 305–318 | stub |
-| `[[ch11-environments]]` | 11 | Multi-Agent Environments | 319–336 | stub |
-| `[[appendix-a-surveys]]` | A | Surveys on MARL | 337–340 | stub |
+| `[[ch01-introduction]]` | 1 | Introduction | 1–18 | **ingested** |
+| `[[ch02-reinforcement-learning]]` | 2 | Reinforcement Learning | 19–42 | skeleton |
+| `[[ch03-games]]` | 3 | Games: Models of Multi-Agent Interaction | 43–60 | skeleton |
+| `[[ch04-solution-concepts]]` | 4 | Solution Concepts for Games | 61–88 | skeleton |
+| `[[ch05-marl-in-games]]` | 5 | MARL in Games: First Steps and Challenges | 89–114 | skeleton |
+| `[[ch06-foundational-algorithms]]` | 6 | MARL: Foundational Algorithms | 115–160 | skeleton |
+| `[[ch07-deep-learning]]` | 7 | Deep Learning | 161–182 | skeleton |
+| `[[ch08-deep-rl]]` | 8 | Deep Reinforcement Learning | 183–218 | skeleton |
+| `[[ch09-deep-marl]]` | 9 | Multi-Agent Deep Reinforcement Learning | 219–304 | skeleton |
+| `[[ch10-marl-in-practice]]` | 10 | Multi-Agent Deep RL in Practice | 305–318 | skeleton |
+| `[[ch11-environments]]` | 11 | Multi-Agent Environments | 319–336 | skeleton |
+| `[[appendix-a-surveys]]` | A | Surveys on MARL | 337–340 | skeleton |
 
 Part structure — note chapter 1 sits *outside* both parts, as a standalone
 introduction:
@@ -61,13 +64,18 @@ have no deck.
 
 | Page | What | Status |
 |---|---|---|
+| `[[multi-agent-system]]` | Environment + agents + goals; agent vs. object | stub ✓ ch1 |
+| `[[reward-structures]]` | Common / zero-sum / general-sum — the book's spine | stub ✓ ch1 |
+| `[[training-execution-modes]]` | Centralised, decentralised, CTDE | stub ✓ ch1 |
+| `[[marl-agendas]]` | Computational / prescriptive / descriptive | drafted ✓ ch1 |
+| `[[scaling-in-number-of-agents]]` | Exponential joint action spaces | stub ✓ ch1 |
 | `[[normal-form-games]]` | Stateless multi-agent interaction | stub |
 | `[[stochastic-games]]` | Games with state; the core MARL model | stub |
 | `[[partial-observability]]` | POSGs, Dec-POMDPs, what agents can't see | stub |
 | `[[solution-concepts]]` | Nash, correlated, Pareto, social welfare | stub |
-| `[[non-stationarity]]` | Why single-agent RL guarantees break | stub |
-| `[[centralised-training-decentralised-execution]]` | CTDE — the dominant deep-MARL paradigm | stub |
-| `[[credit-assignment]]` | Which agent caused the team reward? | stub |
+| `[[non-stationarity]]` | Why single-agent RL guarantees break | stub ✓ ch1 |
+| `[[centralised-training-decentralised-execution]]` | CTDE — the dominant deep-MARL paradigm | stub ✓ ch1 |
+| `[[credit-assignment]]` | Which agent caused the team reward? | stub ✓ ch1 |
 | `[[value-decomposition]]` | Factorising joint value functions; IGM | stub |
 | `[[parameter-sharing]]` | One network, many agents | stub |
 | `[[self-play]]` | Training against copies of yourself | stub |
@@ -103,6 +111,6 @@ Used by the exercises (`upstream/exercises/deep_marl_data/`):
 
 | Page | Environment | Status |
 |---|---|---|
-| `[[level-based-foraging]]` | LBF — cooperative foraging, `lbf_8x8-2p-3f_coop` | stub |
+| `[[level-based-foraging]]` | LBF — the book's running example | stub ✓ ch1 |
 | `[[robotic-warehouse]]` | RWARE — `rware_tiny_4ag` | stub |
 | `[[smaclite]]` | SMAClite — `smaclite_2s3z`, `smaclite_2s_vs_1sc` | stub |
