@@ -201,3 +201,24 @@ documents the wikilink syntax rather than linking.
 Added this as lint check 2 in `workflows/lint.md`. **The existing broken-link
 check could not have caught it:** it greps `\[\[...\]\]` regardless of
 surrounding backticks, so every one of these looked like a healthy link.
+
+## [2026-09-11] ingest | Tabular IQL exercise
+
+Wrote [[iql-tabular]] — the highest-demand gap after [[value-decomposition]]
+(6 inbound links). Landing page for `upstream/exercises/tabular_marl/`:
+what the two stubbed methods correspond to in the book, how to run it in the
+project venv, and what to expect. **Hints and references only — no solution**
+(P3).
+
+**Discrepancy recorded:** the exercise's `create_pd_game` uses a
+positive-reward Prisoner's Dilemma — (C,C)=(3,3), (C,D)=(0,5), (D,C)=(5,0),
+(D,D)=(1,1) — while the book's Fig. 3.2(c) uses negatives: (−1,−1), (−5,0),
+(0,−5), (−3,−3). Both are genuine PDs (ordinal structure $T>R>P>S$ holds for
+$5>3>1>0$ and $0>-1>-3>-5$), but plotted numbers won't match the book.
+
+Verified the exercise imports and the environment constructs under `.venv`;
+`gymnasium`/`numpy`/`matplotlib` come with `uv sync`, no extra install needed.
+
+Connection worth pursuing: PD is **class 3b** in Fig. 5.2, where IQL's
+convergence is "Y/N", and Wunder, Littman & Babes (2010) report chaotic
+non-convergence averaging *above* the Nash reward. Good first experiment.

@@ -134,7 +134,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 | [[mappo]] | Multi-Agent PPO | `configs/algorithm/mappo.yaml` | stub |
 | [[vdn]] | Value Decomposition Networks | `configs/algorithm/vdn.yaml` | stub |
 | [[qmix]] | QMIX (monotonic mixing network) | `configs/algorithm/qmix.yaml` | stub |
-| [[iql-tabular]] | Tabular Independent Q-Learning | `upstream/exercises/tabular_marl/iql.py` | stub |
+| [[iql-tabular]] | **Tabular IQL — the exercise to do next** | `upstream/exercises/tabular_marl/iql.py` | solid |
 
 ---
 
