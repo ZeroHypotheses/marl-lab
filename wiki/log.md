@@ -187,3 +187,17 @@ exercise), [[vdn]]/[[qmix]] (4 each, → §9.5.2–9.5.3).
 
 **Next:** ch. 6 (64 eqs — the user is starting it). Then ch. 9 (98 eqs), worth
 splitting across sessions.
+
+## [2026-09-11] lint | Fixed non-rendering wikilinks in index.md
+
+All 65 wikilinks in [[index]] were wrapped in backticks — `` `[[slug]]` `` —
+making them **code spans, not links**. They looked correct in plain text and in
+git diffs, and were dead in Obsidian. Unwrapped all 65; 53 now resolve to pages
+and 13 are intentional gaps (ch. 6/9/11 algorithms and environments).
+
+The single backtick-wrapped example left in `SCHEMA.md` is correct — it
+documents the wikilink syntax rather than linking.
+
+Added this as lint check 2 in `workflows/lint.md`. **The existing broken-link
+check could not have caught it:** it greps `\[\[...\]\]` regardless of
+surrounding backticks, so every one of these looked like a healthy link.

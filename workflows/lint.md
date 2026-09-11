@@ -15,13 +15,22 @@ when something feels inconsistent.
    ```
    Diff the two.
 
-2. **Orphan pages** — pages nothing links to. Either link them or question why
+2. **Wikilinks that don't render.** A `[[link]]` wrapped in backticks is a code
+   span, not a link — it looks fine in a plain-text diff and is dead in Obsidian.
+   Check with:
+   ```bash
+   grep -rn '`\[\[' wiki/ | grep -v SCHEMA.md   # expect no output
+   ```
+   (`SCHEMA.md` legitimately shows `[[slug]]` as code when documenting the
+   syntax.)
+
+3. **Orphan pages** — pages nothing links to. Either link them or question why
    they exist.
 
-3. **Contradictions** — scan `⚠️ conflict:` markers. Have any been resolved by a
+4. **Contradictions** — scan `⚠️ conflict:` markers. Have any been resolved by a
    later source? Resolve and cite, or escalate to the human.
 
-4. **Errata drift** — run `./scripts/fetch-errata.sh`. It warns if the upstream
+5. **Errata drift** — run `./scripts/fetch-errata.sh`. It warns if the upstream
    errata has changed since the `sha256` recorded in
    [`wiki/sources/errata.md`](../wiki/sources/errata.md). If it has: read the new
    entries, check whether any touches a section cited in `wiki/`, fix those
@@ -29,18 +38,18 @@ when something feels inconsistent.
    **A wiki page that was right when written can be made wrong by a new
    erratum — this check is the only thing that catches it.**
 
-5. **Stale claims** — pages whose `sources:` have since been superseded.
+6. **Stale claims** — pages whose `sources:` have since been superseded.
 
-6. **Unverified claims** — `❓ unverified:` markers. Can any be settled from a
+7. **Unverified claims** — `❓ unverified:` markers. Can any be settled from a
    source now in `book/` or `upstream/`? Settle them.
 
-7. **Missing pages** — concepts referenced repeatedly across pages with no page
+8. **Missing pages** — concepts referenced repeatedly across pages with no page
    of their own. These are the highest-value pages to write next.
 
-8. **Index drift** — every file in `wiki/*/` appears in `index.md`, and every
+9. **Index drift** — every file in `wiki/*/` appears in `index.md`, and every
    `index.md` row points at a real file. `status` values still honest?
 
-9. **Citation coverage** — non-obvious claims carrying no citation. Flag them.
+10. **Citation coverage** — non-obvious claims carrying no citation. Flag them.
 
 ## Output
 
