@@ -97,7 +97,9 @@ averaging above the Nash equilibrium reward**.
 `utils.py` gives `visualise_q_tables`, `visualise_q_convergence` and
 `visualise_evaluation_returns` — Q-values per agent, convergence over training,
 and evaluation returns. Note these are **evaluation** returns under
-$\epsilon = 0.05$, in the sense of [[learning-curves]].
+$\epsilon = 0.05$, in the sense of [[learning-curves]]. They estimate achieved
+returns but do not test a game-theoretic solution concept; see
+[[iql-evaluation-vs-solution-concepts]].
 
 ## Related
 [[independent-learning]] · [[temporal-difference-learning]] ·

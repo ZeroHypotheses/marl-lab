@@ -241,3 +241,16 @@ standard Markdown preview did not resolve. Converted its navigational links,
 its index entry, and the backlink from [[iql-tabular]] to relative Markdown
 links. Verified that every target exists and that the note body contains no
 remaining unsupported wikilinks.
+
+## [2026-09-12] query | Does `iql_eval` use a solution concept?
+
+Answered from: [[iql-tabular]], [[solution-concepts]],
+[[independent-learning]] · Filed as: [[iql-evaluation-vs-solution-concepts]] ·
+Gaps found: none.
+
+Distinguished empirical return evaluation from solution-concept evaluation.
+For the exercise's one-step Prisoner's Dilemma, a Nash-aware evaluator would
+measure each agent's unilateral-deviation gain; Pareto/welfare evaluation would
+compare against the feasible return set; and no-regret would require the
+episode-level action history. `iql_eval` does none of these—it reports only the
+mean and standard deviation of returns under an exploratory policy.

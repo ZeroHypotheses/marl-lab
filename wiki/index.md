@@ -143,6 +143,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 | Page | What | Status |
 |---|---|---|
 | [Hands-on study loop](notes/hands-on-study-loop.md) | Read → predict → implement → run → explain → record; starts with tabular IQL | solid |
+| [[iql-evaluation-vs-solution-concepts]] | Why IQL's mean-return evaluator does not test Nash, Pareto, or no-regret | solid |
 
 ---
 
