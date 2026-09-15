@@ -134,7 +134,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 | [[mappo]] | Multi-Agent PPO | `configs/algorithm/mappo.yaml` | stub |
 | [[vdn]] | Value Decomposition Networks | `configs/algorithm/vdn.yaml` | stub |
 | [[qmix]] | QMIX (monotonic mixing network) | `configs/algorithm/qmix.yaml` | stub |
-| [[iql-tabular]] | **Tabular IQL — the exercise to do next** | `upstream/exercises/tabular_marl/iql.py` | solid |
+| [[iql-tabular]] | **Tabular IQL — completed first exercise** | `upstream/exercises/tabular_marl/iql.py` | solid |
 
 ---
 
@@ -144,6 +144,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 |---|---|---|
 | [Hands-on study loop](notes/hands-on-study-loop.md) | Read → predict → implement → run → explain → record; starts with tabular IQL | solid |
 | [[iql-evaluation-vs-solution-concepts]] | Why IQL's mean-return evaluator does not test Nash, Pareto, or no-regret | solid |
+| [[first-tabular-iql-exercise]] | Lessons from implementing and testing the first tabular IQL exercise | solid |
 
 ---
 

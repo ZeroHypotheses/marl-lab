@@ -104,4 +104,5 @@ returns but do not test a game-theoretic solution concept; see
 ## Related
 [[independent-learning]] · [[temporal-difference-learning]] ·
 [[normal-form-games]] · [[nash-equilibrium]] · [[non-stationarity]] ·
-[hands-on study loop](../notes/hands-on-study-loop.md)
+[hands-on study loop](../notes/hands-on-study-loop.md) ·
+[[first-tabular-iql-exercise]]

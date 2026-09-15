@@ -254,3 +254,13 @@ measure each agent's unilateral-deviation gain; Pareto/welfare evaluation would
 compare against the feasible return set; and no-regret would require the
 episode-level action history. `iql_eval` does none of these—it reports only the
 mean and standard deviation of returns under an exploratory policy.
+
+## [2026-09-15] exercise | Tabular IQL in Prisoner's Dilemma
+
+Learned: the game exposes a constant observation rather than joint actions;
+each agent selects from its own `Discrete` action space; `learn()` mutates the
+Q-tables in place; terminal transitions learn the immediate reward without a
+bootstrap; and strict `< epsilon` preserves the exact zero/one exploration
+boundaries. Verified greedy selection, exploration coverage, terminal and
+non-terminal Q-learning updates, and the full training run. Filed as:
+[[first-tabular-iql-exercise]] · Still unclear: none.
