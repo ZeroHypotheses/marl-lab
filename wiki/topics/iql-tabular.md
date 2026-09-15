@@ -3,7 +3,7 @@ title: Tabular IQL (the exercise)
 type: algorithm
 status: solid
 sources: ["[[ch05-marl-in-games]]", "upstream/exercises/tabular_marl/"]
-updated: 2026-09-11
+updated: 2026-09-15
 ---
 
 # Tabular IQL — the Barcelona exercise
@@ -73,6 +73,18 @@ Action **0 = cooperate**, **1 = defect**.
 > $0 > -1 > -3 > -5$ alike. But the numbers on your plots will not match the
 > numbers in the book, and D is still dominant in both. Don't spend twenty
 > minutes hunting a bug that isn't there.
+
+### Prison sentences are costs, not rewards
+
+The familiar story may instead label outcomes by **years in prison**: mutual
+cooperation costs one year each, mutual defection costs two, and the exploited
+cooperator serves three while the defector goes free
+([Wikipedia, “Prisoner's dilemma”](https://en.wikipedia.org/wiki/Prisoner%27s_dilemma)).
+Those numbers must be **minimised**, whereas the book and this exercise use
+rewards that agents maximise. Converting sentence cost $c$ to reward $-c$
+gives $(C,C)=(-1,-1)$ and $(D,D)=(-2,-2)$; cooperation is still collectively
+better because $-1>-2$. The numerical magnitudes are presentation choices—the
+defining preference order remains $T>R>P>S$.
 
 ## What to expect, and why it's interesting
 

@@ -264,3 +264,15 @@ bootstrap; and strict `< epsilon` preserves the exact zero/one exploration
 boundaries. Verified greedy selection, exploration coverage, terminal and
 non-terminal Q-learning updates, and the full training run. Filed as:
 [[first-tabular-iql-exercise]] · Still unclear: none.
+
+## [2026-09-15] query | Why are Wikipedia's Prisoner's Dilemma values reversed?
+
+Answered from: [[normal-form-games]], [[rl-game-theory-dictionary]],
+[[iql-tabular]], and Wikipedia's “Prisoner's dilemma” article · Filed into:
+[[iql-tabular]] · Gaps found: none.
+
+Wikipedia's narrative table reports years in prison, which are costs to
+minimise; the exercise reports rewards to maximise. Negating sentence lengths
+restores the reward convention. Both representations preserve the defining
+ordinal relation $T>R>P>S$: mutual cooperation is collectively better than
+mutual defection, while unilateral defection is individually dominant.
