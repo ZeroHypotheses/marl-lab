@@ -1,7 +1,7 @@
 # Workflow: Work a book exercise
 
-For local exercises in `exercises/`, the exercises in `upstream/exercises/`
-(Barcelona MARL Summer School 2024), and any exercise from the textbook itself.
+For the exercises in `upstream/exercises/` (Barcelona MARL Summer School 2024)
+and any exercise from the textbook itself.
 
 **This workflow is deliberately constrained. Read principle P3 in `AGENTS.md`.**
 The human is here to learn MARL, not to receive working code. An agent that
@@ -45,7 +45,6 @@ That's what makes the exercise pay off next month.
 
 | Exercise | Location | Covers |
 |---|---|---|
-| Stag Hunt solution-concept evaluator | `exercises/01-solution-concepts/01.01-stag-hunt-evaluator/problem/` | Nash deviation gains, Pareto optimality, welfare, fairness |
 | Tabular IQL in Prisoner's Dilemma | `upstream/exercises/tabular_marl/iql.py` | implement `act` + `update`, ε scheduling |
 | Deep MARL in Level-Based Foraging | `upstream/exercises/` + book codebase | actor-critic algorithms via `marlbase` |
 | Visualising policies and value functions | `upstream/exercises/deep_marl_data/` | pretrained runs on LBF, RWARE, SMAClite |

@@ -53,7 +53,6 @@ marl-lab/
 │   └── notes/             synthesis: comparisons, open questions, answers worth keeping
 ├── experiments/           the human's own work — one directory per experiment
 │   └── _template/         copy this to start a new one
-├── exercises/             local implementation exercises between readings
 ├── workflows/             harness-neutral playbooks (the real instructions)
 ├── scripts/               small utilities (bootstrap, book text, invariant check)
 ├── .agents/skills/        thin skill wrappers — canonical, cross-harness
@@ -76,11 +75,11 @@ in `wiki/`, the session leaked.
 reader has no conversation history and cannot ask a follow-up. Link related
 pages with `[[wikilinks]]` liberally.
 
-**P3 — Teach, don't solve.** For anything in `upstream/exercises/` or the local
-`exercises/`, the default is hints, Socratic questions, and pointers to the
-relevant book section — not a finished answer. Give the full solution only when
-explicitly asked for it, and when you do, explain *why* it works. Learning is
-the product; working code is a side effect.
+**P3 — Teach, don't solve.** For anything in `upstream/exercises/`, the default
+is hints, Socratic questions, and pointers to the relevant book section — not
+a finished answer. Give the full solution only when explicitly asked for it,
+and when you do, explain *why* it works. Learning is the product; working code
+is a side effect.
 
 **P4 — Ground every claim.** Cite the source: `[Ch. 9.3]`, `[MADDPG paper §4]`,
 `upstream/codebase/…:42`. A claim in the wiki with no citation is a bug. When
@@ -113,7 +112,7 @@ whatever agent you are.
 | File a chapter, paper, or talk into the wiki | [workflows/ingest.md](workflows/ingest.md) | "ingest chapter 6", "file this paper" |
 | Answer a question against the wiki | [workflows/query.md](workflows/query.md) | "ask the wiki…", "what do we know about X" |
 | Health-check the wiki (incl. errata drift) | [workflows/lint.md](workflows/lint.md) | "lint the wiki", "check the wiki" |
-| Work through a MARL exercise | [workflows/exercise.md](workflows/exercise.md) | "help me with the IQL exercise" |
+| Work through a book exercise | [workflows/exercise.md](workflows/exercise.md) | "help me with the IQL exercise" |
 | Start a new experiment | [workflows/experiment.md](workflows/experiment.md) | "start an experiment to test…" |
 
 ### Skills

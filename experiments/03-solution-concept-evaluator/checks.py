@@ -1,4 +1,4 @@
-"""Acceptance tests for Exercise 01.01."""
+"""Acceptance checks for Experiment 03; run this file explicitly with pytest."""
 
 import numpy as np
 import pytest

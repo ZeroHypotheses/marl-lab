@@ -1,4 +1,4 @@
-# Exercise 01.01 — Evaluate solution concepts in Stag Hunt
+# Experiment 03 — Solution-concept evaluator
 
 Turn the written audit of Experiment 02 into executable evaluation. This is a
 post-hoc evaluator: it receives a known two-agent payoff matrix and one
@@ -9,7 +9,7 @@ deterministic joint action. It does **not** alter or rerun IQL.
 Make the distinction between a learning algorithm and a solution concept
 concrete. IQL produces a joint action; this evaluator decides what that action
 means under several Chapter 4 specifications →
-[`solution-concepts-as-specifications`](../../../../wiki/notes/solution-concepts-as-specifications.md).
+[`solution-concepts-as-specifications`](../../wiki/notes/solution-concepts-as-specifications.md).
 
 ## Your task
 
@@ -46,7 +46,7 @@ needed yet.
 ## Run the checks
 
 ```bash
-.venv/bin/pytest exercises/01-solution-concepts/01.01-stag-hunt-evaluator/problem -q
+.venv/bin/pytest experiments/03-solution-concept-evaluator/checks.py -q
 ```
 
 The tests cover all four Stag Hunt outcomes and one Prisoner's Dilemma outcome.

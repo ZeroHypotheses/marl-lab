@@ -73,7 +73,7 @@ $\delta(S,H)=(2,1)$ and $\delta(H,S)=(1,2)$, whereas both coordinated outcomes
 have zero deviation gain. Thus a small checker can distinguish “is Nash?” from
 “which Nash equilibrium is desirable?” without changing IQL's update rule.
 The corresponding implementation exercise is
-[Exercise 01.01](../../exercises/01-solution-concepts/01.01-stag-hunt-evaluator/problem/readme.md).
+[Experiment 03](../../experiments/03-solution-concept-evaluator/README.md).
 
 ## Interpretation and limits
 
