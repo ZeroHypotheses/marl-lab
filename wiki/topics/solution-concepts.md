@@ -74,6 +74,11 @@ and a deterministic optimal policy always exists
 - Computing Nash equilibria is **PPAD-complete** →
   [[complexity-of-equilibria]]. MARL is not a way around that.
 
+The solution concept may define the learning mechanism, or it may only specify
+which learned outputs will be accepted and how they will be evaluated. See
+[[solution-concepts-as-specifications]] for why that distinction still gives
+the concept operational force.
+
 ## Related
 [[ch04-solution-concepts]] · [[best-response]] · [[reward-structures]] ·
-[[non-stationarity]] · [[marl-agendas]]
+[[non-stationarity]] · [[marl-agendas]] · [[solution-concepts-as-specifications]]

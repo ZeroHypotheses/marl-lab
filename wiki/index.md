@@ -144,6 +144,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 |---|---|---|
 | [Hands-on study loop](notes/hands-on-study-loop.md) | Read → predict → implement → run → explain → record; starts with tabular IQL | solid |
 | [[iql-evaluation-vs-solution-concepts]] | Why IQL's mean-return evaluator does not test Nash, Pareto, or no-regret | solid |
+| [[solution-concepts-as-specifications]] | What Nash buys when it is not part of the learning update | solid |
 | [[first-tabular-iql-exercise]] | Lessons from implementing and testing the first tabular IQL exercise | solid |
 
 ---
