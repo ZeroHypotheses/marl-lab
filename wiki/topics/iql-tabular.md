@@ -3,7 +3,7 @@ title: Tabular IQL (the exercise)
 type: algorithm
 status: solid
 sources: ["[[ch05-marl-in-games]]", "upstream/exercises/tabular_marl/"]
-updated: 2026-09-15
+updated: 2026-09-17
 ---
 
 # Tabular IQL — the Barcelona exercise
@@ -117,4 +117,4 @@ returns but do not test a game-theoretic solution concept; see
 [[independent-learning]] · [[temporal-difference-learning]] ·
 [[normal-form-games]] · [[nash-equilibrium]] · [[non-stationarity]] ·
 [hands-on study loop](../notes/hands-on-study-loop.md) ·
-[[first-tabular-iql-exercise]]
+[[first-tabular-iql-exercise]] · [[exp-02-iql-stag-hunt-selection]]

@@ -14,4 +14,5 @@ in `wiki/notes/` so it's linked into the knowledge base, not stranded here.
 
 | # | Question | Status |
 |---|---|---|
-| — | *(none yet)* | |
+| 01 | Can we implement and test tabular IQL in one-step Prisoner's Dilemma? | complete |
+| 02 | Does IQL select Stag Hunt's risk-dominant equilibrium across seeds? | complete; hare/hare in 20/20 seeds |

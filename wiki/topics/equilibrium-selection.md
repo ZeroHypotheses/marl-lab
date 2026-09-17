@@ -3,7 +3,7 @@ title: Equilibrium Selection
 type: topic
 status: solid
 sources: ["[[ch05-marl-in-games]]"]
-updated: 2026-09-11
+updated: 2026-09-17
 ---
 
 # Equilibrium Selection
@@ -37,6 +37,13 @@ Agents shift probability toward H — **which makes deviating from H worse for
 everyone**, reinforcing it. Exploration noise, not the payoff structure, picks
 the equilibrium.
 
+## Local evidence
+
+In [[exp-02-iql-stag-hunt-selection]], tabular IQL selected hare/hare in all 20
+preregistered seeds under the fixed one-step payoff matrix and Experiment 01's
+epsilon schedule. This supports the predicted tendency for that configuration,
+not a universal convergence claim.
+
 ## Four approaches
 
 1. **Refine the solution space** — require [[pareto-optimality]] or
@@ -58,4 +65,5 @@ the equilibrium.
 
 ## Related
 [[solution-concepts]] · [[nash-equilibrium]] · [[independent-learning]] ·
-[[non-stationarity]] · [[agent-modelling]]
+[[non-stationarity]] · [[agent-modelling]] ·
+[[exp-02-iql-stag-hunt-selection]]

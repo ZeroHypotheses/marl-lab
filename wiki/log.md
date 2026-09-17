@@ -276,3 +276,24 @@ minimise; the exercise reports rewards to maximise. Negating sentence lengths
 restores the reward convention. Both representations preserve the defining
 ordinal relation $T>R>P>S$: mutual cooperation is collectively better than
 mutual defection, while unilateral defection is individually dominant.
+
+## [2026-09-15] query | What does Nash buy if it is not used for learning?
+
+Answered from: [[solution-concepts]], [[best-response]], [[convergence-types]],
+and [[marl-agendas]] · Filed as: [[solution-concepts-as-specifications]] · Gaps
+found: none.
+
+Distinguished the learning algorithm as a search procedure from the solution
+concept as its specification. Nash provides an acceptance condition, a
+deviation-based evaluation metric, a target for convergence guarantees, and
+constraints on algorithm representation and tractability even when it is
+absent from the update rule. If it changes none of training, algorithm choice,
+evaluation, guarantees, or deployment, merely naming it has no operational
+value.
+
+## [2026-09-17] experiment | 02-iql-stag-hunt-selection
+
+Hypothesis: unchanged tabular IQL would select risk-dominant hare/hare in more
+than 10 of 20 preregistered Stag Hunt seeds · Result: confirmed, with hare/hare
+in 20/20 seeds, stag/stag in 0/20, and mismatched in 0/20 · Filed as:
+[[exp-02-iql-stag-hunt-selection]].
