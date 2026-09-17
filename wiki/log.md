@@ -297,3 +297,11 @@ Hypothesis: unchanged tabular IQL would select risk-dominant hare/hare in more
 than 10 of 20 preregistered Stag Hunt seeds · Result: confirmed, with hare/hare
 in 20/20 seeds, stag/stag in 0/20, and mismatched in 0/20 · Filed as:
 [[exp-02-iql-stag-hunt-selection]].
+
+## [2026-09-17] query | Apply different solution concepts to Stag Hunt?
+
+Answered from: [[solution-concepts-as-specifications]], [[nash-equilibrium]],
+[[pareto-optimality]], [[social-welfare-and-fairness]],
+[[correlated-equilibrium]], and [[no-regret]] · Filed into:
+[[exp-02-iql-stag-hunt-selection]] · Gap found: Experiment 02 did not retain
+the episode-level history required to evaluate external or internal regret.

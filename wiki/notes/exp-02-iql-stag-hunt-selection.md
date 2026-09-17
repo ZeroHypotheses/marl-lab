@@ -54,6 +54,27 @@ preregistered threshold of 10. Across the 40 final per-agent tables, Hare's
 Q-value ranged from `2.000000` to `2.050000`; Stag's ranged from `0.000372` to
 `0.127501` ([recorded output](../../experiments/02-iql-stag-hunt-selection/README.md)).
 
+## The same result under different solution concepts
+
+Applying several Chapter 4 concepts to the four deterministic joint actions
+changes the verdict without changing the learned policy:
+
+| Criterion | stag/stag $(4,4)$ | hare/hare $(2,2)$ | What it says about Experiment 02 |
+|---|---|---|---|
+| Nash | passes | passes | The result is stable against unilateral deviation, but Nash does not select between the two equilibria [Ch. 4.4, Eq. 4.16]. |
+| Pareto optimality | passes | fails | stag/stag makes both agents strictly better off, so it Pareto-dominates hare/hare [Ch. 4.8, Eq. 4.25]. |
+| Social welfare | $8$ | $4$ | stag/stag uniquely maximises the sum of returns among deterministic outcomes [Ch. 4.9, Eq. 4.26]. |
+| Fairness product | $16$ | $4$ | stag/stag also wins the book's product-based fairness criterion; symmetry means there is no distributional trade-off here [Ch. 4.9, Eq. 4.27]. |
+| Correlated equilibrium | passes | passes | Every Nash equilibrium is a correlated equilibrium, so this broader concept still does not select between them [Ch. 4.6]. |
+| No-regret | unknown | unknown | No-regret judges the whole episode sequence, not only the final greedy policy; the runner did not retain the action history needed for Eq. 4.28 [Ch. 4.10]. |
+
+For the mismatched outcomes, the Nash deviation gains are non-zero:
+$\delta(S,H)=(2,1)$ and $\delta(H,S)=(1,2)$, whereas both coordinated outcomes
+have zero deviation gain. Thus a small checker can distinguish “is Nash?” from
+“which Nash equilibrium is desirable?” without changing IQL's update rule.
+The corresponding implementation exercise is
+[Exercise 01.01](../../exercises/01-solution-concepts/01.01-stag-hunt-evaluator/problem/readme.md).
+
 ## Interpretation and limits
 
 The result is consistent with the mechanism in [[equilibrium-selection]]:

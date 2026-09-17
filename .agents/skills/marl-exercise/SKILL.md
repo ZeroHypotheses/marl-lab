@@ -1,6 +1,6 @@
 ---
 name: marl-exercise
-description: Work through a MARL book exercise in hint-first teaching mode - escalating hints, never the solution unless explicitly asked. Trigger when the user says: help me with this exercise, I am stuck on the IQL exercise, work exercise N, check my implementation. Do NOT trigger for the user's own experiments (use marl-experiment).
+description: Work through a local, book, or upstream MARL exercise in hint-first teaching mode - escalating hints, never the solution unless explicitly asked. Trigger when the user says: help me with this exercise, I am stuck on the IQL exercise, work exercise N, check my implementation. Do NOT trigger for the user's own experiments (use marl-experiment).
 ---
 
 # marl-exercise
