@@ -2,8 +2,8 @@
 title: Solution Concepts as Specifications
 type: note
 status: solid
-sources: ["[[ch01-introduction]]", "[[ch04-solution-concepts]]", "[[ch05-marl-in-games]]"]
-updated: 2026-09-15
+sources: ["[[ch01-introduction]]", "[[ch04-solution-concepts]]", "[[ch05-marl-in-games]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-18
 ---
 
 # Solution concepts as specifications
@@ -14,6 +14,22 @@ learning algorithm is then the search procedure; the solution concept defines
 the target set and how the result will be judged. This is the computational
 MARL agenda: use learning to compute solutions, potentially without knowing the
 complete game in advance [Ch. 1.5].
+
+“Need not” is important: post-training evaluation is only one possible role.
+Chapter 6 introduces algorithms that put solution concepts directly inside the
+learning process. The useful distinction is therefore not “training versus
+solution concepts,” but **where the solution concept enters the pipeline**:
+
+| Role | What the concept does | Chapter 6 example |
+|---|---|---|
+| Training mechanism | Selects policies and constructs learning targets from current joint-action values | Joint-action learning can use minimax, Nash, or correlated-equilibrium solutions in its TD updates [Ch. 6 introduction; §§6.1–6.2] |
+| Training objective | Defines the quantity the dynamics try to improve or drive down | Regret-matching algorithms aim to minimise regret and achieve no-regret outcomes [Ch. 6 introduction; §6.5] |
+| Post-training specification | Classifies or scores a learned policy without having shaped its updates | A Nash deviation test applied to the output of plain IQL [Ch. 4.4; Ch. 5.3.2] |
+
+The same solution concept can occupy more than one role: an algorithm may use
+an equilibrium operator during training and later be evaluated by its distance
+from that equilibrium set. Conversely, plain IQL can accidentally reach a Nash
+equilibrium even though Nash appears nowhere in its update.
 
 For Nash equilibrium, the contract is mutual best response. A joint policy
 $\pi$ is accepted only if no agent can improve by changing its policy alone

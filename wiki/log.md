@@ -305,3 +305,13 @@ Answered from: [[solution-concepts-as-specifications]], [[nash-equilibrium]],
 [[correlated-equilibrium]], and [[no-regret]] · Filed into:
 [[exp-02-iql-stag-hunt-selection]] · Gap found: Experiment 02 did not retain
 the episode-level history required to evaluate external or internal regret.
+
+## [2026-09-18] query | Can solution concepts be part of training?
+
+Answered from: [[solution-concepts-as-specifications]],
+[[ch06-foundational-algorithms]], and the Chapter 6 introduction · Filed into:
+[[solution-concepts-as-specifications]] and Experiment 03's README · Gap found:
+our discussion had emphasized the post-training role used with plain IQL.
+Recorded three distinct roles: a solution concept can supply an operator inside
+learning, define the learning objective, or evaluate the learned output after
+training.
