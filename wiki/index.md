@@ -147,6 +147,7 @@ Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra config
 | [[solution-concepts-as-specifications]] | Where solution concepts enter: training mechanism, objective, or post-training evaluation | solid |
 | [[first-tabular-iql-exercise]] | Lessons from implementing and testing the first tabular IQL exercise | solid |
 | [[exp-02-iql-stag-hunt-selection]] | IQL selected risk-dominant hare/hare in all 20 preregistered Stag Hunt seeds | solid |
+| [[exp-03-solution-concept-evaluator]] | Executable distinction between unilateral Nash stability and joint Pareto efficiency | solid |
 
 ---
 

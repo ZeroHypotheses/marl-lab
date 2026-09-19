@@ -56,8 +56,18 @@ needed yet.
 ```
 
 The tests cover all four Stag Hunt outcomes and one Prisoner's Dilemma outcome.
-They are intended to fail with `NotImplementedError` until you implement the
-evaluator.
+The completed implementation passes all five checks.
+
+## Result
+
+The prediction was confirmed on 2026-09-19. The evaluator distinguishes Nash
+stability from Pareto efficiency: hare/hare is Nash but Pareto-dominated by
+stag/stag, while the mismatched outcomes are not Nash. The Prisoner's Dilemma
+case confirms that the implementation is not specific to Stag Hunt.
+
+```text
+5 passed in 0.06s
+```
 
 ## Suggested order
 

@@ -315,3 +315,19 @@ our discussion had emphasized the post-training role used with plain IQL.
 Recorded three distinct roles: a solution concept can supply an operator inside
 learning, define the learning objective, or evaluate the learned output after
 training.
+
+## [2026-09-19] query | Are Nash equilibrium and Pareto optimality the same?
+
+Answered from: [[nash-equilibrium]], [[pareto-optimality]], and
+[[exp-02-iql-stag-hunt-selection]] · Filed into: [[pareto-optimality]] · Gaps
+found: none. Nash rules out profitable unilateral deviations while holding the
+other policies fixed; Pareto optimality rules out jointly achievable return
+improvements. Stag Hunt and Prisoner's Dilemma show that neither implies the
+other.
+
+## [2026-09-19] experiment | 03-solution-concept-evaluator
+
+Hypothesis: a generic deterministic-action evaluator can distinguish Nash
+stability from Pareto and welfare desirability · Result: confirmed; all five
+Stag Hunt and Prisoner's Dilemma acceptance checks passed · Filed as:
+[[exp-03-solution-concept-evaluator]].

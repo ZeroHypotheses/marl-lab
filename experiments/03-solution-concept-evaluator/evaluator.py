@@ -29,4 +29,25 @@ def evaluate_joint_action(
     Compare Pareto optimality only against deterministic joint actions in that
     matrix.
     """
-    raise NotImplementedError("Implement the solution-concept evaluator")
+    a0, a1 = joint_action
+    selected_returns = payoff_matrix[a0, a1]
+    returns = (float(selected_returns[0]), float(selected_returns[1]))
+
+    deviation_gains = (
+        float(np.max(payoff_matrix[:, a1, 0]) - returns[0]),
+        float(np.max(payoff_matrix[a0, :, 1]) - returns[1]),
+    )
+
+    candidate_returns = payoff_matrix.reshape(-1, 2)
+    weakly_better = np.all(candidate_returns >= selected_returns, axis=1)
+    strictly_better = np.any(candidate_returns > selected_returns, axis=1)
+    is_pareto_dominated = bool(np.any(weakly_better & strictly_better))
+
+    return Evaluation(
+        returns=returns,
+        welfare=sum(returns),
+        fairness=returns[0] * returns[1],
+        deviation_gains=deviation_gains,
+        is_nash=all(gain == 0 for gain in deviation_gains),
+        is_pareto_optimal=not is_pareto_dominated,
+    )

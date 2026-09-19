@@ -3,7 +3,7 @@ title: Pareto Optimality
 type: topic
 status: solid
 sources: ["[[ch04-solution-concepts]]"]
-updated: 2026-09-11
+updated: 2026-09-19
 ---
 
 # Pareto Optimality
@@ -17,6 +17,23 @@ $$\forall i : U_i(\pi') \ge U_i(\pi) \quad\text{and}\quad \exists i : U_i(\pi') 
 $\pi$ is **Pareto-optimal** if nothing Pareto-dominates it — no agent can be made
 better off without making another worse off. (Some game theory literature says
 "Pareto-efficient/inefficient".)
+
+## Why this is not Nash equilibrium
+
+The two definitions quantify over different changes:
+
+- Nash holds the other agents' policies fixed and asks whether **one agent**
+  can profitably deviate: $(\pi_i',\pi_{-i})$ [Ch. 4.4, Eq. 4.16].
+- Pareto optimality permits an entirely different **joint policy** $\pi'$ and
+  asks whether all agents weakly improve and at least one strictly improves
+  [Ch. 4.8, Eq. 4.25].
+
+Therefore neither property implies the other. In Stag Hunt, hare/hare is Nash
+but is Pareto-dominated by stag/stag: reaching the improvement requires both
+agents to change together. In Prisoner's Dilemma, cooperate/cooperate is
+Pareto-optimal but not Nash: either agent can profit by deviating alone while
+the other continues to cooperate [Ch. 4.7; Ch. 5.4.2]. Nash measures
+**unilateral stability**; Pareto optimality measures **joint efficiency**.
 
 **Every game has at least one Pareto-optimal joint policy.** In common-reward
 games, all Pareto-optimal joint policies achieve the same expected return, which

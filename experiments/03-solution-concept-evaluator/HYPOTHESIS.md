@@ -1,7 +1,7 @@
 ---
 experiment: 03-solution-concept-evaluator
 date: 2026-09-17
-status: open
+status: confirmed
 ---
 
 # Question
@@ -46,10 +46,20 @@ payoff matrix.
 
 # Result
 
-Not run. Implement `evaluate_joint_action()` and execute the acceptance tests.
+Confirmed on 2026-09-19. The evaluator passed all five acceptance checks: both
+coordinated Stag Hunt outcomes are Nash, only stag/stag is Pareto-optimal, and
+both mismatched outcomes have positive unilateral-deviation gains. The
+Prisoner's Dilemma defect/defect case also passed, showing that the evaluator
+is not hard-coded to Stag Hunt.
+
+Exact command:
+
+```bash
+.venv/bin/pytest experiments/03-solution-concept-evaluator/checks.py -q
+```
+
+Observed result: `5 passed in 0.06s`.
 
 # Filed as
 
-Not yet filed. On completion, update
-`wiki/notes/exp-02-iql-stag-hunt-selection.md` or create a dedicated note if the
-implementation produces a broader insight.
+[[exp-03-solution-concept-evaluator]]
