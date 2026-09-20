@@ -99,6 +99,17 @@ an equation.
 30 seconds and answers one question beats a framework. Every experiment states
 its hypothesis before it states its code.
 
+**P8 — Accelerate adaptively, and make the trade-off explicit.** The current
+deep-MARL route uses the minimum viable Chapter 6 pass in
+`wiki/notes/hands-on-study-loop.md`, treats detailed foundational algorithms
+and Chapters 7–8 as references when their prerequisites are already secure,
+and then proceeds to Chapter 9. At every reading or experiment transition,
+state what this route skips or defers and why. Treat the route as a reversible
+hypothesis, not a fixed syllabus: if the human has trouble connecting concepts,
+repeatedly encounters unexplained assumptions or notation, or cannot relate an
+implementation to its strategic mechanism, recommend the smallest relevant
+backfill and update the route in the wiki.
+
 ---
 
 ## 4. Workflows

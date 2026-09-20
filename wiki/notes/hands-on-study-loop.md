@@ -102,9 +102,57 @@ state/observation conventions and its $\phi_i$ policy-parameter versus $\theta_i
 value-parameter notation. Return to §§8.1 or 8.2 only when Chapter 9's
 value-based or policy-gradient derivations expose a gap.
 
+### Accelerated route when deep MARL is the priority
+
+A reader who already knows deep RL does not need to finish every Chapter 6
+derivation or implement every foundational algorithm before starting Chapter 9.
+The safe shortcut is to skip the **catalogue**, not the conceptual bridge
+[Ch. 6; Ch. 9].
+
+Minimum viable Chapter 6 pass:
+
+1. Read §6.1 closely: understand that each stochastic-game state induces a
+   normal-form continuation game, and that a solution-concept operator replaces
+   the single-agent maximum in the Bellman backup [Eqs. 6.3–6.8].
+2. Read the beginning of §6.2 through Eq. 6.11, then §6.2.4. Know how a
+   minimax/Nash/correlated value enters a TD target and why joint-action values
+   can still be insufficient.
+3. Read the §6.3 introduction and the JAL-AM idea in §6.3.2. Chapter 9.6 later
+   replaces these tabular agent models with neural representations.
+4. Read §6.6. Treat the detailed Nash-Q, correlated-Q, IGA, WoLF, GIGA, and
+   regret-matching derivations as references until a later topic needs them.
+
+Then start Chapter 9 at §§9.1–9.5: training/execution modes, independent deep
+learning, centralised critics, and value decomposition. Backfill §6.3 before
+Chapter 9.6 if neural agent modelling is important, and §§6.4–6.5 when studying
+learning dynamics, regret, or equilibrium convergence in depth.
+
+This route is appropriate for becoming productive with modern deep-MARL
+algorithms quickly. It is not equivalent to mastering MARL foundations: a full
+skip makes it easier to mistake function approximation for the main conceptual
+advance and obscures why different strategic operators have different
+information and convergence requirements [Ch. 6.1–6.5].
+
+### Keep the shortcut adaptive
+
+This route is provisional. At each reading or experiment transition, explicitly
+name the sections being deferred and the concepts assumed from them. Continue
+on the fast path only while the reader can connect the current mechanism to the
+strategic problem it addresses—for example, why a centralised critic, mixing
+network, or agent model changes the information available during learning
+[Ch. 5; Ch. 6; Ch. 9].
+
+Pause and backfill when a skipped dependency causes repeated confusion, the
+book starts using unexplained assumptions or notation, or an implementation can
+be followed mechanically but not explained conceptually. Backfill the smallest
+relevant section first, then revise this route if the same kind of gap recurs.
+The decision to accelerate is a working hypothesis and may be changed as the
+reader's experience supplies better evidence.
+
 ## Related
 
 [Tabular IQL](../topics/iql-tabular.md) ·
 [independent learning](../topics/independent-learning.md) ·
 [temporal-difference learning](../topics/temporal-difference-learning.md) ·
-[learning curves](../topics/learning-curves.md)
+[learning curves](../topics/learning-curves.md) ·
+[[bcn-summer-school]]

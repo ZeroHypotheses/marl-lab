@@ -395,3 +395,22 @@ stated scheduling reason—too many algorithms and ideas for the available
 time—from the chapter's foundational importance. Recorded that the lab should
 not copy the course omission: Chapter 6 shows how solution concepts enter
 learning updates and exposes the assumptions behind MARL convergence results.
+
+## [2026-09-20] query | Can Chapter 6 be skipped to learn deep MARL faster?
+
+Answered from: [[ch06-foundational-algorithms]], [[ch09-deep-marl]],
+[[bcn-summer-school]], and [[hands-on-study-loop]] · Filed into:
+[[hands-on-study-loop]] · Gaps found: none. Added an accelerated route that
+keeps §6.1, the generic JAL target and its limitations, and the agent-modelling
+bridge, while deferring the detailed foundational algorithm catalogue and
+moving directly into Chapter 9 §§9.1–9.5.
+
+## [2026-09-20] query | How should the accelerated route adapt to learning gaps?
+
+Answered from: [[hands-on-study-loop]], [[ch06-foundational-algorithms]], and
+[[ch09-deep-marl]] · Filed into: [[hands-on-study-loop]] · Gaps found: none.
+Made the fast path explicitly provisional: future transitions must identify
+deferred material, watch for difficulty connecting concepts, and recommend the
+smallest relevant backfill before revising the route when gaps recur. Recorded
+the same policy in the repository's canonical agent instructions so it persists
+across sessions and harnesses.
