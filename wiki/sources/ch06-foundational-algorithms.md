@@ -167,4 +167,5 @@ continue moving while the empirical frequencies converge [Ch. 6.5.2]. See
 ## Related
 
 [[ch05-marl-in-games]] · [[ch09-deep-marl]] · [[solution-concepts]] ·
-[[stochastic-games]] · [[temporal-difference-learning]] · [[convergence-types]]
+[[stochastic-games]] · [[temporal-difference-learning]] · [[convergence-types]] ·
+[[bcn-summer-school]]

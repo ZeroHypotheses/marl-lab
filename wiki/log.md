@@ -378,3 +378,20 @@ and [[index]] · Conflicts flagged: none · Open questions raised: how to test t
 robustness–exploitation trade-off of minimax Q-learning, how decentralised
 learners coordinate equilibrium selection, and which two-state stochastic game
 best isolates the Chapter 6.1–6.2 transition.
+
+## [2026-09-20] ingest | IIIA-CSIC MARL Course 2024 chapter map
+
+Pages created: [[bcn-summer-school]] · Pages updated: [[index]] · Conflicts
+flagged: none · Open questions raised: none. Mapped the four Stefano V. Albrecht
+recordings to Chapters 1–5 and 7–9 with timestamped transitions; recorded that
+Chapter 6 is explicitly skipped and that Chapters 10–11 are not systematically
+covered.
+
+## [2026-09-20] query | Why did the IIIA-CSIC course skip Chapter 6?
+
+Answered from: [[bcn-summer-school]] and [[ch06-foundational-algorithms]] ·
+Filed into: [[bcn-summer-school]] · Gaps found: none. Distinguished Albrecht's
+stated scheduling reason—too many algorithms and ideas for the available
+time—from the chapter's foundational importance. Recorded that the lab should
+not copy the course omission: Chapter 6 shows how solution concepts enter
+learning updates and exposes the assumptions behind MARL convergence results.

@@ -57,7 +57,7 @@ have no deck.
 | Page | What | Status |
 |---|---|---|
 | [[errata]] | **Author-published corrections** — our PDF is the 2nd printing; all applied | solid |
-| [[bcn-summer-school]] | Barcelona MARL Summer School 2024 lectures ([videos](https://iiia.csic.es/en-us/marl-course/)) | stub |
+| [[bcn-summer-school]] | IIIA-CSIC MARL Course 2024 — four sessions mapped to book chapters and timestamps | solid |
 
 ---
 
