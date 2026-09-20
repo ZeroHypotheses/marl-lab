@@ -2,8 +2,8 @@
 title: (Coarse) Correlated Equilibrium
 type: topic
 status: solid
-sources: ["[[ch04-solution-concepts]]"]
-updated: 2026-09-11
+sources: ["[[ch04-solution-concepts]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # (Coarse) Correlated Equilibrium
@@ -76,6 +76,17 @@ per decision point or a whole policy up front, what it conditions on, whether
 outcomes are revealed, and how deviators are treated. "Relatively complex" — the
 book does not settle on one.
 
+## As a learning outcome
+
+Chapter 6 reaches this concept in two different ways. [[correlated-q-learning]]
+solves for a correlated equilibrium inside every TD target and therefore needs
+a shared correlation mechanism [Ch. 6.2.3]. By contrast,
+[[regret-matching]] does not solve the equilibrium directly: if all agents drive
+internal regret to zero, their empirical joint-action distribution approaches
+the set of correlated equilibria; external regret yields the larger coarse set
+[Ch. 6.5.2].
+
 ## Related
 [[nash-equilibrium]] · [[no-regret]] (no internal regret → correlated equilibria) ·
-[[solution-concepts]] · [[scaling-in-number-of-agents]]
+[[solution-concepts]] · [[scaling-in-number-of-agents]] ·
+[[correlated-q-learning]] · [[regret-matching]]

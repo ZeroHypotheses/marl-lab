@@ -2,8 +2,8 @@
 title: Temporal-Difference Learning
 type: topic
 status: solid
-sources: ["[[ch02-reinforcement-learning]]"]
-updated: 2026-09-11
+sources: ["[[ch02-reinforcement-learning]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # Temporal-Difference Learning (TD)
@@ -71,6 +71,19 @@ the $1-\epsilon$ mass among them [footnote 6].)
 
 This is the `act` method and `schedule_hyperparameters` of the tabular exercise.
 
+## Multi-agent continuation values
+
+[[joint-action-learning]] preserves the TD form but replaces the single-agent
+$\max$ with a game value computed from the learned joint-action Q-tables:
+
+$$X_i=r_i^t+\gamma\operatorname{Value}_i(\Gamma_{s^{t+1}}).$$
+
+The solution concept defining `Value` creates minimax, Nash, and correlated
+Q-learning [Eq. 6.11; Ch. 6.2]. This is exactly where a solution concept becomes
+part of training rather than a post-training evaluator. Only the minimax
+zero-sum variant inherits a broadly stated contraction-style convergence result;
+the general-sum variants face equilibrium-selection problems [Ch. 6.2.1–6.2.3].
+
 ## Related
 [[dynamic-programming]] · [[value-functions-and-bellman]] · [[learning-curves]] ·
-[[iql-tabular]] · [[ch06-foundational-algorithms]]
+[[iql-tabular]] · [[ch06-foundational-algorithms]] · [[joint-action-learning]]

@@ -2,8 +2,8 @@
 title: Equilibrium Selection
 type: topic
 status: solid
-sources: ["[[ch05-marl-in-games]]"]
-updated: 2026-09-17
+sources: ["[[ch05-marl-in-games]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # Equilibrium Selection
@@ -63,7 +63,18 @@ not a universal convergence claim.
    equilibria pay differently there is a genuine conflict of preference** — so
    talking does not dissolve the problem.
 
+## Inside a learning update
+
+Chapter 6 shows that selection is not only a deployment problem. In
+[[nash-q-learning]], the selected equilibrium determines both the current
+policy and the next-state TD target. If learners choose different equilibria,
+their updates can be mutually inconsistent; if the selection changes abruptly,
+so does the bootstrap target [Ch. 6.2.2]. [[correlated-q-learning]] has a larger
+equilibrium set, so computational tractability does not remove this coordination
+problem [Ch. 6.2.3]. Zero-sum [[minimax-q-learning]] avoids value selection
+because all minimax equilibria share the same value [Ch. 6.2.1].
+
 ## Related
 [[solution-concepts]] · [[nash-equilibrium]] · [[independent-learning]] ·
 [[non-stationarity]] · [[agent-modelling]] ·
-[[exp-02-iql-stag-hunt-selection]]
+[[exp-02-iql-stag-hunt-selection]] · [[nash-q-learning]]

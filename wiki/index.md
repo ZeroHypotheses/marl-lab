@@ -6,8 +6,8 @@ when answering a question, then drill into the pages it points at.
 Status legend: `stub` = placeholder · `drafted` = written, unverified ·
 `solid` = checked against a cited source.
 
-**Chapters 1–5 are ingested** (all of Part I plus the introduction). Chapters
-6–11 and Appendix A have *skeleton* pages: verified section structure, page
+**Chapters 1–6 are ingested** (all of Part I plus the introduction). Chapters
+7–11 and Appendix A have *skeleton* pages: verified section structure, page
 ranges, equation counts and errata pointers, but **no summary of their content**
 — they haven't been read. They exist so the wiki is navigable ("where is IGM
 defined?" → §9.5.1) without anything being invented. Fill one in with
@@ -36,7 +36,7 @@ equations must be checked against the PDF, since extraction is lossy.
 | [[ch03-games]]                   | 3   | Games: Models of Multi-Agent Interaction  | 43–60   | **ingested** |
 | [[ch04-solution-concepts]]       | 4   | Solution Concepts for Games               | 61–88   | **ingested** |
 | [[ch05-marl-in-games]]           | 5   | MARL in Games: First Steps and Challenges | 89–114  | **ingested** |
-| [[ch06-foundational-algorithms]] | 6   | MARL: Foundational Algorithms             | 115–160 | skeleton     |
+| [[ch06-foundational-algorithms]] | 6   | MARL: Foundational Algorithms             | 115–160 | **ingested** |
 | [[ch07-deep-learning]]           | 7   | Deep Learning                             | 161–182 | skeleton     |
 | [[ch08-deep-rl]]                 | 8   | Deep Reinforcement Learning               | 183–218 | skeleton     |
 | [[ch09-deep-marl]]               | 9   | Multi-Agent Deep Reinforcement Learning   | 219–304 | skeleton     |
@@ -113,7 +113,7 @@ have no deck.
 | [[credit-assignment]] | Whose action? — **not** only a common-reward problem | solid |
 | [[scaling-in-number-of-agents]] | Exponential — **except when it isn't** (§5.4.4) | solid |
 | [[self-play]] | Algorithm vs policy self-play; mixed-play | solid |
-| [[agent-modelling]] | Modelling the others — filled by ch. 6 | stub |
+| [[agent-modelling]] | Empirical and Bayesian models of other agents | solid |
 | [[marl-agendas]] | Computational / prescriptive / descriptive | drafted |
 | [[value-decomposition]] | Factorising joint value functions; IGM | stub |
 | [[parameter-sharing]] | One network, many agents | stub |
@@ -122,6 +122,22 @@ have no deck.
 ---
 
 ## Algorithms
+
+### Foundational tabular algorithms — ch. 6
+
+| Page | Algorithm | Central idea | Status |
+|---|---|---|---|
+| [[joint-action-learning]] | JAL-GT | Solve each learned state game inside the TD target | solid |
+| [[minimax-q-learning]] | Minimax Q-learning | Zero-sum minimax continuation value | solid |
+| [[nash-q-learning]] | Nash Q-learning | Nash continuation value; selection-sensitive | solid |
+| [[correlated-q-learning]] | Correlated Q-learning | Correlated-equilibrium continuation value | solid |
+| [[fictitious-play]] | Fictitious play | Best-respond to empirical opponent frequencies | solid |
+| [[jal-agent-modelling]] | JAL-AM | State-conditioned opponent models plus joint-action Q | solid |
+| [[wolf-policy-hill-climbing]] | WoLF-PHC | Learn slowly when winning, fast when losing | solid |
+| [[generalized-infinitesimal-gradient-ascent]] | GIGA | Projected policy gradients with no external regret | solid |
+| [[regret-matching]] | Regret matching | Sample in proportion to positive regret | solid |
+
+### Deep algorithms
 
 Implemented in `upstream/codebase/marlbase/` — confirmed from its Hydra configs.
 

@@ -2,8 +2,8 @@
 title: Convergence Types
 type: topic
 status: solid
-sources: ["[[ch05-marl-in-games]]"]
-updated: 2026-09-11
+sources: ["[[ch05-marl-in-games]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # Convergence Types
@@ -35,18 +35,25 @@ solution *space* but may then "wander" inside it without settling.
 **These are not academic hedges — they exist because specific algorithms cannot
 achieve Eq. 5.3:**
 
-- **Fictitious play** (§6.3.1) learns *deterministic* policies, so it cannot
+- **[[fictitious-play]]** (§6.3.1) learns *deterministic* policies, so it cannot
   represent the uniform Nash equilibrium of Rock-Paper-Scissors — but its
   empirical action distribution converges [Eq. 5.5] (Fudenberg & Levine 1998).
 - **IGA** (§6.4.1) learns probabilistic policies yet may still not converge to a
   probabilistic Nash equilibrium — but its *average rewards* do [Eq. 5.8]
   (Singh, Kearns & Mansour 2000).
-- **Regret matching** (§6.5) can change $\pi^z$ abruptly and may converge to no
+- **[[regret-matching]]** (§6.5) can change $\pi^z$ abruptly and may converge to no
   single $\pi^*$ — but its empirical distributions converge to the set of
   (coarse) correlated equilibria [Eq. 5.7] (Hart & Mas-Colell 2000)
   → [[no-regret]].
 
 Eq. 5.3 implies all the weaker types.
+
+Chapter 6 supplies the corresponding algorithmic examples. Minimax Q-learning
+converges in Q-values under its zero-sum assumptions; WoLF-IGA converges in
+policy in its restricted two-agent/two-action setting; IGA may only converge in
+average reward; fictitious play, GIGA, and regret matching can instead provide
+empirical-distribution guarantees [Ch. 6.2.1, 6.3.1, 6.4.2–6.5.2]. These claims
+are not interchangeable.
 
 ## What none of them say
 

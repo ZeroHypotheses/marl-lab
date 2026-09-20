@@ -364,3 +364,17 @@ found: none. Chose a two-step bridge: first model-based Shapley value iteration
 in a tiny two-state zero-sum stochastic game, then minimax Q-learning after
 §6.2.1. Deferred stochastic Stag Hunt so dynamics and general-sum equilibrium
 selection are not introduced simultaneously.
+
+## [2026-09-20] ingest | Chapter 6 — MARL: Foundational Algorithms
+
+Pages created: [[joint-action-learning]], [[minimax-q-learning]],
+[[nash-q-learning]], [[correlated-q-learning]], [[fictitious-play]],
+[[jal-agent-modelling]], [[wolf-policy-hill-climbing]],
+[[generalized-infinitesimal-gradient-ascent]], [[regret-matching]] · Pages
+updated: [[ch06-foundational-algorithms]], [[agent-modelling]], [[no-regret]],
+[[convergence-types]], [[equilibrium-selection]],
+[[temporal-difference-learning]], [[correlated-equilibrium]], [[best-response]],
+and [[index]] · Conflicts flagged: none · Open questions raised: how to test the
+robustness–exploitation trade-off of minimax Q-learning, how decentralised
+learners coordinate equilibrium selection, and which two-state stochastic game
+best isolates the Chapter 6.1–6.2 transition.

@@ -2,8 +2,8 @@
 title: No-Regret
 type: topic
 status: solid
-sources: ["[[ch04-solution-concepts]]"]
-updated: 2026-09-11
+sources: ["[[ch04-solution-concepts]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # No-Regret
@@ -61,13 +61,26 @@ The payoff of the distinction [Ch. 4.10] (Hart & Mas-Colell 2000; Young 2004):
 | no **external** regret, general-sum | the set of **coarse** correlated equilibria |
 | no **internal** regret, general-sum | the set of [[correlated-equilibrium|correlated equilibria]] |
 
-Revisited with algorithms in §6.5 (regret matching) →
-[[ch06-foundational-algorithms]]. On what "converges" means here, see §5.2
-([[ch05-marl-in-games]]).
+## Algorithms that realise the guarantee
+
+[[regret-matching]] assigns probability in proportion to positive average
+regret [Eqs. 6.53–6.58]. Its regret decreases at rate $O(1/\sqrt z)$ without
+assuming anything about how the other agents choose actions [Ch. 6.5.2].
+[[generalized-infinitesimal-gradient-ascent]] reaches the same external-regret
+order through projected policy-gradient updates [Ch. 6.4.5].
+
+The convergence object matters: neither result says the current policy
+$\pi^z$ settles. If every agent has vanishing external regret, the **empirical
+joint-action distribution** approaches the set of coarse correlated equilibria;
+vanishing internal regret strengthens that limiting set to correlated
+equilibria [Ch. 6.4.5, 6.5.2]. Rock-Paper-Scissors illustrates the distinction:
+the policies can keep moving while empirical play approaches the uniform
+distribution [Ch. 6.5.2; [[convergence-types]]].
 
 Other regret definitions: de Farias & Megiddo 2003; Lehrer 2003; Chang 2007;
 Zinkevich et al. 2007; Arora, Dekel & Tewari 2012; Crandall 2014.
 
 ## Related
 [[solution-concepts]] · [[correlated-equilibrium]] · [[marl-agendas]] ·
-[[non-stationarity]]
+[[non-stationarity]] · [[regret-matching]] ·
+[[generalized-infinitesimal-gradient-ascent]]
