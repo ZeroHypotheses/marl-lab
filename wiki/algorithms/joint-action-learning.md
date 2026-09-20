@@ -16,10 +16,11 @@ learned state game inside its temporal-difference target [Ch. 6.2].
 ## Setting
 
 A finite stochastic game with observable states, joint actions, and every
-agent's reward. Each learner stores $Q_i(s,a)$ for every agent $i$, state $s$,
-and joint action $a$ [Algorithm 7]. This is decentralised learning with unusually
-strong observations: the update is performed independently, but each learner
-sees enough to reconstruct every agent's state game [Ch. 6.2].
+agent's reward. Each learner stores one $Q_j(s,a)$ for **every** agent
+$j\in I$, state $s$, and joint action $a$ [Algorithm 7]. This is decentralised
+learning with unusually strong observations: the update is performed
+independently, but each learner sees enough to reconstruct every agent's state
+game [Ch. 6.2].
 
 ## Update rule
 
@@ -36,6 +37,31 @@ where $\alpha$ is the learning rate, $\gamma$ the discount factor, and
 `Value` is defined by a chosen solution concept [Eq. 6.11; Algorithm 7]. The
 same concept supplies the action policy for the current state game.
 
+## Where the Q-functions are learned
+
+Algorithm 7 uses two agent indices with different roles. Its heading fixes
+$i$ as the agent controlled by this copy of the algorithm. The loop variable
+$j\in I$ on lines 8–9 ranges over the **entire** agent set, including $j=i$.
+Consequently, one learner maintains and updates local estimates of
+$Q_1,\ldots,Q_n$, not only its controlled agent's $Q_i$.
+
+The policy-selection step does not update a Q-function. First, the current
+tables $Q_1(s,\cdot),\ldots,Q_n(s,\cdot)$ are treated as the payoff functions of
+$\Gamma_s$ and solved to obtain $(\pi_1,\ldots,\pi_n)$; the controlled agent then
+samples its own action from $\pi_i$ [Eq. 6.10; Algorithm 7, lines 5–6]. After the
+environment reveals the complete joint action, every reward, and the next
+state, Algorithm 7 applies the temporal-difference update above to the observed
+entry $Q_j(s,a)$ for every agent $j$ [Algorithm 7, lines 7–9].
+
+Thus $Q_i$ is agent $i$'s value function, but it is indexed by the **joint**
+action and is not generally sufficient by itself to choose $a_i$. In a
+general-sum game, the solution for $\pi_i$ depends on the full learned game,
+including the other agents' payoff tables $Q_j$. This differs from IQL, where
+agent $i$ greedily or ε-greedily selects directly from $Q_i(s,a_i)$ while
+ignoring the other agents [Ch. 5.3.2; Ch. 6.2]. In a two-agent zero-sum game,
+one payoff table determines the other, so minimax can be computed from a single
+agent's table.
+
 ## Why it works / when it breaks
 
 The construction is the model-free analogue of Shapley value iteration: the
@@ -49,7 +75,8 @@ needed by a game [Ch. 6.2.4].
 ## Relation to
 
 [[minimax-q-learning]] · [[nash-q-learning]] · [[correlated-q-learning]] ·
-[[jal-agent-modelling]] · [[temporal-difference-learning]]
+[[jal-agent-modelling]] · [[temporal-difference-learning]] ·
+[[independent-learning]]
 
 ## In the codebase
 

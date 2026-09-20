@@ -414,3 +414,14 @@ deferred material, watch for difficulty connecting concepts, and recommend the
 smallest relevant backfill before revising the route when gaps recur. Recorded
 the same policy in the repository's canonical agent instructions so it persists
 across sessions and harnesses.
+
+## [2026-09-20] query | Where does Algorithm 7 learn Q, and how does it choose an action?
+
+Answered from: [[joint-action-learning]], [[independent-learning]], and Chapter
+6 §6.2 · Filed into: [[joint-action-learning]] · Gaps found: none. Clarified
+that $i$ denotes the agent controlled by this algorithm instance, whereas the
+update index $j$ ranges over the complete agent set and includes $i$. The TD
+update therefore learns every agent's joint-action Q-table after a transition;
+action selection solves that complete learned state game and samples the
+controlled agent's component policy, rather than performing an IQL-style greedy
+lookup in $Q_i(s,a_i)$.
