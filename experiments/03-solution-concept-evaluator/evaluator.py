@@ -39,8 +39,10 @@ def evaluate_joint_action(
     )
 
     candidate_returns = payoff_matrix.reshape(-1, 2)
-    weakly_better = np.all(candidate_returns >= selected_returns, axis=1)
+    # at least one agent wins...
     strictly_better = np.any(candidate_returns > selected_returns, axis=1)
+    # ... and nobody loses.
+    weakly_better = np.all(candidate_returns >= selected_returns, axis=1)
     is_pareto_dominated = bool(np.any(weakly_better & strictly_better))
 
     return Evaluation(
