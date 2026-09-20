@@ -3,7 +3,7 @@ title: Minimax
 type: topic
 status: solid
 sources: ["[[ch04-solution-concepts]]"]
-updated: 2026-09-11
+updated: 2026-09-20
 ---
 
 # Minimax
@@ -56,6 +56,29 @@ Solvable in **polynomial time** (interior-point; simplex is exponential in the
 worst case but fast in practice). This is one of the "direct methods" that
 [[marl-agendas]] notes can beat MARL when the game is fully known — and it makes
 minimax one of the few tractable cases in [[complexity-of-equilibria]].
+
+### What an LP solver receives
+
+$U_j^*$ is an optimization variable, not an input. For $m$ actions of agent
+$i$, collect all variables into
+
+$$z=(x_1,\ldots,x_m,U_j^*).$$
+
+Then “minimize $U_j^*$” is the linear objective $c^Tz$ with
+$c=(0,\ldots,0,1)$. Each opponent action $a_j$ contributes one inequality
+
+$$\sum_{a_i}R_j(a_i,a_j)x_{a_i}-U_j^*\le 0,$$
+
+which becomes one row of $A_{ub}z\le b_{ub}$. The probability constraint is
+one row of $A_{eq}z=b_{eq}$, and the bounds enforce $x_{a_i}\ge0$ while leaving
+$U_j^*$ unrestricted. For any fixed policy $x$, the inequalities force
+$U_j^*$ to be at least the opponent's return for every pure response; minimizing
+it therefore minimizes the opponent's best achievable response [Ch. 4.3.1,
+Eqs. 4.12–4.15].
+
+Geometrically, the constraints form a convex polytope and the linear objective
+is lowered until it touches the feasible region. Simplex moves between its
+vertices; interior-point methods approach the optimum through its interior.
 
 ## Related
 [[nash-equilibrium]] · [[best-response]] · [[reward-structures]] ·

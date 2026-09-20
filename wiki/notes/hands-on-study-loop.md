@@ -2,8 +2,8 @@
 title: A Hands-On Study Loop for marl-lab
 type: note
 status: solid
-sources: ["[[ch02-reinforcement-learning]]", "[[ch05-marl-in-games]]", "[[iql-tabular]]"]
-updated: 2026-09-11
+sources: ["[[ch02-reinforcement-learning]]", "[[ch03-games]]", "[[ch05-marl-in-games]]", "[[ch06-foundational-algorithms]]", "[[ch07-deep-learning]]", "[[ch08-deep-rl]]", "[[ch09-deep-marl]]", "[[iql-tabular]]"]
+updated: 2026-09-20
 ---
 
 # A hands-on study loop for marl-lab
@@ -56,6 +56,51 @@ mechanism, run it, explain the result aloud, then file the durable insight. Use
 continue into Chapter 6 only
 after the Q-learning-to-IQL connection is comfortable enough to explain
 without looking at the code.
+
+## Bridge from matrix games to Chapter 6
+
+The Prisoner's Dilemma and Stag Hunt experiments are not discarded: a
+stochastic game associates a normal-form game with every state. Their one-step
+environments are degenerate cases in which there is no continuation value
+[Ch. 3.3; Ch. 6.1]. The missing Chapter 6 mechanism is the dependence of each
+state game's payoff matrix on transitions and bootstrapped future values.
+
+Add that mechanism in two steps:
+
+1. Implement Shapley value iteration for a tiny, fully known, two-state
+   zero-sum stochastic game. Check that different initial value vectors converge
+   to the same values and that their max-norm distance shrinks at no more than
+   the discount factor. This isolates Algorithm 6's model-based minimax backup.
+2. After reading §6.2.1, replace the known transition expectation with sampled
+   transitions to obtain minimax Q-learning. This isolates the move from
+   dynamic programming to temporal-difference learning.
+
+Do not begin this bridge with stochastic Stag Hunt: combining state dynamics,
+multiple general-sum Nash equilibria, and equilibrium selection would introduce
+three new mechanisms at once. Revisit general-sum stochastic games after the
+zero-sum backup is understood.
+
+## Fast path from Chapter 6 to Chapter 9
+
+Readers already comfortable with deep learning and deep RL can skip a linear
+reading of Chapters 7 and 8 after completing Chapter 6. Chapter 7 is background
+on function approximation, neural networks, optimization, CNNs, and RNNs.
+Chapter 8 supplies the single-agent algorithms and notation that Chapter 9
+extends [Ch. 7; Ch. 8; Ch. 9 introduction].
+
+Use Chapters 7 and 8 as references if the following are already comfortable:
+
+- DQN, including replay buffers, online and target networks, and the TD target;
+- policy gradients, REINFORCE, actor–critic, advantage estimates, A2C, and PPO;
+- on-policy versus off-policy learning and bootstrapping;
+- the distinction between environment state, agent observation, and observation
+  history under partial observability;
+- recurrent policies or value functions for sequence-dependent decisions.
+
+Before starting Chapter 9, skim §8.3 and §9.2 to align with the book's
+state/observation conventions and its $\phi_i$ policy-parameter versus $\theta_i$
+value-parameter notation. Return to §§8.1 or 8.2 only when Chapter 9's
+value-based or policy-gradient derivations expose a gap.
 
 ## Related
 

@@ -2,8 +2,8 @@
 title: Dynamic Programming (for MDPs)
 type: topic
 status: solid
-sources: ["[[ch02-reinforcement-learning]]"]
-updated: 2026-09-11
+sources: ["[[ch02-reinforcement-learning]]", "[[ch06-foundational-algorithms]]"]
+updated: 2026-09-20
 ---
 
 # Dynamic Programming (for MDPs)
@@ -57,6 +57,27 @@ $\|f^\pi(v) - f^\pi(u)\|_\infty = \gamma\|M^\pi(v-u)\|_\infty \le \gamma\|v-u\|_
 > This proof structure is worth remembering: contraction ⇒ unique fixed point ⇒
 > convergence. Whether the analogous operator in a *game* is still a contraction
 > is exactly what's at stake in [[ch06-foundational-algorithms]].
+
+### Extension to zero-sum stochastic games
+
+Let $F$ denote Algorithm 6's complete update: construct each state game's
+joint-action matrices from a value vector, then take their minimax values. If
+two value estimates $V$ and $W$ differ by at most
+$\delta=\lVert V-W\rVert_\infty$, transition probabilities average their
+continuation-value differences and cannot make the error exceed $\delta$.
+Discounting reduces every resulting joint-action-value difference to at most
+$\gamma\delta$. Finally, changing every payoff in a zero-sum matrix game by at
+most $\gamma\delta$ changes its minimax value by at most $\gamma\delta$.
+Therefore
+
+$$\lVert F(V)-F(W)\rVert_\infty
+\le\gamma\lVert V-W\rVert_\infty.$$
+
+Thus Algorithm 6 repeatedly shrinks the distance between value estimates. By
+the Banach fixed-point theorem it has one fixed point and converges to it from
+any initialization; that fixed point is the optimal minimax value function
+[Ch. 6.1, Eq. 6.8]. This guarantee does not automatically survive replacing
+the minimax operator with an arbitrary general-sum equilibrium-selection rule.
 
 ## Related
 [[value-functions-and-bellman]] · [[temporal-difference-learning]] ·

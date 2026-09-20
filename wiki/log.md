@@ -331,3 +331,36 @@ Hypothesis: a generic deterministic-action evaluator can distinguish Nash
 stability from Pareto and welfare desirability · Result: confirmed; all five
 Stag Hunt and Prisoner's Dilemma acceptance checks passed · Filed as:
 [[exp-03-solution-concept-evaluator]].
+
+## [2026-09-19] query | Can an experienced deep-RL reader skip to Chapter 9?
+
+Answered from: [[ch07-deep-learning]], [[ch08-deep-rl]], and
+[[ch09-deep-marl]] · Filed into: [[hands-on-study-loop]] · Gaps found: none.
+Recorded a readiness-gated fast path: skip a linear reading of Chapters 7–8,
+skim §8.3 and §9.2 for the book's conventions, and use §§8.1–8.2 as references
+when Chapter 9 exposes a DQN or actor–critic gap.
+
+## [2026-09-20] query | How is the minimax linear program actually minimized?
+
+Answered from: [[minimax]] and Chapter 4 §4.3.1 · Filed into: [[minimax]] ·
+Gaps found: none. Mapped the book's policy probabilities and $U_j^*$ into an
+LP variable vector, objective coefficients, inequality/equality matrices, and
+bounds; recorded the geometric intuition behind simplex and interior-point
+solvers.
+
+## [2026-09-20] query | What is the contraction argument in Chapter 6.1?
+
+Answered from: [[dynamic-programming]] and Chapter 6 §6.1 · Filed into:
+[[dynamic-programming]] · Gaps found: none. Connected the MDP proof to Shapley
+value iteration: transition averaging is non-expansive, discounting shrinks by
+$\gamma$, and the zero-sum minimax-value operator is non-expansive, yielding a
+$\gamma$-contraction and convergence to a unique fixed point.
+
+## [2026-09-20] query | How should the matrix-game exercises transition into Chapter 6?
+
+Answered from: [[stochastic-games]], [[dynamic-programming]], and
+[[ch06-foundational-algorithms]] · Filed into: [[hands-on-study-loop]] · Gaps
+found: none. Chose a two-step bridge: first model-based Shapley value iteration
+in a tiny two-state zero-sum stochastic game, then minimax Q-learning after
+§6.2.1. Deferred stochastic Stag Hunt so dynamics and general-sum equilibrium
+selection are not introduced simultaneously.
